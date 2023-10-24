@@ -92,6 +92,7 @@ void PhysicsEngine::UpdatePhysics(float deltaTime)
 			if (iteratorObject == otherObject)
 				continue;
 
+
 			if (CollisionAABBvsAABB(iteratorObject->GetModelAABB(), otherObject->GetModelAABB()))
 			{
 				std::vector<glm::vec3> perObjectCollisions;

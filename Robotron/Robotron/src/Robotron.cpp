@@ -1,15 +1,24 @@
 #include "Robotron.h"
-#include "Player/Player.h"
+#include "Player/iPlayerFactory.h"
+#include "Player/PlayerFactory.h"
 
 void Robotron::SetUp()
 {
-	Entity* player = new Player();
+#pragma region Player
 
-	entityManager.AddEntity("Player", player);
+	iPlayerFactory* playerFactory = new PlayerFactory();
+	iPlayer* player =  playerFactory->CreatePlayer();
 
+	entityManager.AddEntity("Player", (Entity*)player);
+
+#pragma endregion
+
+#pragma region EntityManager
 	entityManager.AddToRenderer(renderer);
 
 	entityManager.Start();
+#pragma endregion
+	
 }
 
 void Robotron::PreRender()

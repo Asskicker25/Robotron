@@ -30,10 +30,13 @@
     <ClCompile Include="src\Player\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Player\PlayerFactory.cpp">
+    <ClCompile Include="src\Player\AbstractFactory\PlayerFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Player\iPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player\Builder\PlayerBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,16 +53,19 @@
     <ClInclude Include="src\Player\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Player\iPlayerFactory.h">
+    <ClInclude Include="src\Player\AbstractFactory\iPlayerFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Player\PlayerFactory.h">
+    <ClInclude Include="src\Player\AbstractFactory\PlayerFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Player\iPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Player\iPlayerBuilder.h">
+    <ClInclude Include="src\Player\Builder\iPlayerBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Player\Builder\PlayerBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

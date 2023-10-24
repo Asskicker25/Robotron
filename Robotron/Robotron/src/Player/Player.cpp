@@ -17,15 +17,12 @@ void Player::Shoot()
 
 void Player::Start()
 {
-	Debugger::Print("Player Start");
 }
 
 void Player::Update()
 {
-	Debugger::Print("Player Update");
 }
 
 void Player::AddToRenderer(Renderer& renderer)
 {
-	Debugger::Print("Add to Renderer");
 }

@@ -39,12 +39,26 @@ void Player::OnKeyPressed(const int& key)
 {
 	if (key == GLFW_KEY_A)
 	{
-		phyObject.velocity.x = -10.0f;
+		if (phyObject.velocity.x >= 0.0f) 
+		{
+			phyObject.velocity.x = -10.0f;
+		}
+		else 
+		{
+			phyObject.velocity.x = -10.0f;
+		}
 	}
 
 	if (key == GLFW_KEY_D)
 	{
-		phyObject.velocity.x = 10.0f;
+		if (phyObject.velocity.x <= 0.0f) 
+		{
+			phyObject.velocity.x = 10.0f;
+		}
+		else 
+		{
+			phyObject.velocity.x = 10.0f;
+		}
 	}
 }
 
@@ -52,22 +66,24 @@ void Player::OnKeyReleased(const int& key)
 {
 	if (key == GLFW_KEY_A)
 	{
-		phyObject.velocity.x = 0.0f;
+		if (phyObject.velocity.x < 0.0f) 
+		{
+			phyObject.velocity.x = 0.0f;
+		}
 	}
 
 	if (key == GLFW_KEY_D)
 	{
-		phyObject.velocity.x = 0.0f;
+		if (phyObject.velocity.x > 0.0f) 
+		{
+			phyObject.velocity.x = 0.0f;
+		}
 	}
 
 }
 
 void Player::OnKeyHeld(const int& key)
 {
-	if (key == GLFW_KEY_A)
-	{
-
-	}
 }
 
 void Player::AddToPhysics(PhysicsEngine& physicsEngine)

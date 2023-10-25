@@ -8,6 +8,10 @@ void iPlayer::Update()
 {
 }
 
-void iPlayer::AddToRenderer(Renderer& renderer)
+void iPlayer::AddToRenderer(Renderer& renderer, Shader* shader)
+{
+}
+
+void iPlayer::AddToPhysics(PhysicsEngine& physicsEngine)
 {
 }

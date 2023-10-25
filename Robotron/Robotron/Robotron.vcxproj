@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\InputManager\InputManager.cpp" />
     <ClCompile Include="src\Player\Builder\PlayerBuilder.cpp" />
     <ClCompile Include="src\Player\iPlayer.cpp" />
     <ClCompile Include="src\Player\AbstractFactory\PlayerFactory.cpp" />
@@ -147,6 +148,8 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\InputManager\iInputListener.h" />
+    <ClInclude Include="src\InputManager\InputManager.h" />
     <ClInclude Include="src\Player\Builder\PlayerBuilder.h" />
     <ClInclude Include="src\Player\Builder\iPlayerBuilder.h" />
     <ClInclude Include="src\Player\iPlayer.h" />
@@ -156,6 +159,9 @@
     <ClInclude Include="src\EntityManager\Entity.h" />
     <ClInclude Include="src\EntityManager\EntityManager.h" />
     <ClInclude Include="src\Robotron.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Models\Player\player1.ply" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -13,7 +13,8 @@ private:
 public:
 	void AddEntity(const std::string& entityId, Entity* entity);
 	void RemoveEntity(const std::string& entityId);
-	void AddToRenderer(Renderer& renderer);
+	void AddToRenderer(Renderer& renderer, Shader* shader);
+	void AddToPhysics(PhysicsEngine& physicsEngine);
 
 	void Start();
 	void Update();

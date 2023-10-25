@@ -27,10 +27,18 @@ void EntityManager::Update()
 	}
 }
 
-void EntityManager::AddToRenderer(Renderer& renderer)
+void EntityManager::AddToRenderer(Renderer& renderer, Shader* shader)
 {
 	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
 	{
-		it->second->AddToRenderer(renderer);
+		it->second->AddToRenderer(renderer, shader);
+	}
+}
+
+void EntityManager::AddToPhysics(PhysicsEngine& physicsEngine)
+{
+	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
+	{
+		it->second->AddToPhysics(physicsEngine);
 	}
 }

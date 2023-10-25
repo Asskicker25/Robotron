@@ -10,6 +10,7 @@ private:
 
 public:
 	EntityManager entityManager;
+	PhysicsEngine physicsEngine;
 
 	void SetUp() override;
 	void PreRender() override;

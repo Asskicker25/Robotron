@@ -4,11 +4,50 @@
 void EntityManager::AddEntity(const std::string& entityId, Entity* entity)
 {
 	listOfEntities[entityId] = entity;
+	entity->entityId = entityId;
+	entity->entityManager = this;
 }
 
 void EntityManager::RemoveEntity(const std::string& entityId)
 {
-	listOfEntities.erase(entityId);
+
+	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
+	{
+		if (it->first == entityId)
+		{
+			Destroy(listOfEntities[entityId]);
+			listOfEntities.erase(it->first);
+			return;
+		}
+	}
+
+	//listOfEntities.erase(entityId);
+}
+
+void EntityManager::RemoveEntity(Entity* entity)
+{
+	/*std::unordered_map<std::string, Entity*>::iterator it;
+
+	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
+	{
+		if (it->second == entity)
+		{
+			Destroy(it->first);
+			listOfEntities.erase(it->first);
+			return;
+		}
+	}*/
+}
+
+void EntityManager::AddToRendererAndPhysics(Renderer& renderer, Shader* shader, PhysicsEngine& physicsEngine)
+{
+	this->renderer = renderer;
+	this->physicsEngine = physicsEngine;
+
+	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
+	{
+		it->second->AddToRendererAndPhysics(renderer, shader, physicsEngine);
+	}
 }
 
 void EntityManager::Start()
@@ -19,26 +58,16 @@ void EntityManager::Start()
 	}
 }
 
-void EntityManager::Update()
+void EntityManager::Update(float deltaTime)
 {
 	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
 	{
-		it->second->Update();
+		it->second->Update(deltaTime);
 	}
 }
 
-void EntityManager::AddToRenderer(Renderer& renderer, Shader* shader)
+void EntityManager::Destroy(Entity* entity)
 {
-	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
-	{
-		it->second->AddToRenderer(renderer, shader);
-	}
+	entity->RemoveFromRendererAndPhysics(renderer, physicsEngine);
 }
 
-void EntityManager::AddToPhysics(PhysicsEngine& physicsEngine)
-{
-	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
-	{
-		it->second->AddToPhysics(physicsEngine);
-	}
-}

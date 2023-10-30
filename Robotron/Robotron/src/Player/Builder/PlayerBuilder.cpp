@@ -5,17 +5,19 @@ PlayerBuilder::PlayerBuilder()
     player = new Player();
 }
 
-void PlayerBuilder::SetMaxHealth(const float& maxHealth)
+PlayerBuilder& PlayerBuilder::SetMaxHealth(const float& maxHealth)
 {
     player->SetMaxHealth(maxHealth);
+    return *this;
 }
 
-void PlayerBuilder::SetSpeed(const float& speed)
+PlayerBuilder& PlayerBuilder::SetSpeed(const float& speed)
 {
     player->SetSpeed(speed);
+    return *this;
 }
 
-iPlayer* PlayerBuilder::BuildPlayer()
+BasePlayer* PlayerBuilder::BuildPlayer()
 {
     return player;
 }

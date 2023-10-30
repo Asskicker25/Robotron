@@ -1,9 +1,12 @@
 #include "Robotron.h"
 #include "Player/AbstractFactory/PlayerFactory.h"
 #include "InputManager/InputManager.h"
+#include "Player/Builder/PlayerBuilder.h"
+#include "Player/PlayerController.h"
 
 void Robotron::SetUp()
 {
+
 #pragma region Physics Settings
 
 	physicsEngine.gravity.y = 0;
@@ -12,14 +15,12 @@ void Robotron::SetUp()
 #pragma endregion
 
 
-#pragma region Stop Free Cam
+#pragma region Camera
 
 	stopKeyCallback = true;
 	stopMouseCallback = true;
-	
-#pragma endregion
 
-#pragma region Camera
+	SetBackgroundColor(glm::vec3(0.1f));
 
 	cameraPos = glm::vec3(0.0f, 1.0f, 10.0f);
 
@@ -42,18 +43,30 @@ void Robotron::SetUp()
 
 #pragma region Player
 
-	iPlayerFactory* playerFactory = new PlayerFactory();
+	PlayerFactory* playerFactory = new PlayerFactory();
 
-	iPlayer* player =  playerFactory->CreateBasePlayer();
+	BasePlayer* player =  playerFactory->CreateBasePlayer();
+
+	PlayerController* playerController = new PlayerController();
+	playerController->AssignPlayer(player);
+
+	Model* collisionModel = new Model("Assets/Models/DefaultCube.fbx");
+	collisionModel->transform.SetPosition(glm::vec3(4.0f, 0.0f, 0.0f));
+
+	PhysicsObject* collisionPhyObj = new PhysicsObject();
+	collisionPhyObj->Initialize(collisionModel, AABB, STATIC, TRIGGER, false);
+
+	renderer.AddModel(collisionModel, &defShader);
+	physicsEngine.AddPhysicsObject(collisionPhyObj);
 
 	entityManager.AddEntity("Player", (Entity*)player);
+	entityManager.AddEntity("PlayerController", (Entity*)playerController);
 
 #pragma endregion
 
 #pragma region EntityManager
 
-	entityManager.AddToRenderer(renderer, &defShader);
-	entityManager.AddToPhysics(physicsEngine);
+	entityManager.AddToRendererAndPhysics(renderer, &defShader,physicsEngine);
 
 	entityManager.Start();
 
@@ -67,7 +80,7 @@ void Robotron::PreRender()
 
 void Robotron::PostRender()
 {
-	entityManager.Update();
+	entityManager.Update(deltaTime);
 	physicsEngine.Update(deltaTime);
 }
 

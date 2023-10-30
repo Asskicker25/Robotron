@@ -1,35 +1,38 @@
 #pragma once
 #include "../EntityManager/EntityManager.h"
-#include "iPlayer.h"
-#include "../InputManager/iInputListener.h"
+#include "BasePlayer.h"
 
-class Player : public iPlayer, public iInputListener
+class Player : public BasePlayer
 {
 private:
-	float maxHealth;
-	float speed;
 
-	Model model;
-	PhysicsObject phyObject;
+	class Pimpl;
+	Pimpl* pimpl;
+
+
 
 public:
+	Player();
 
-	void SetMaxHealth(const float& maxHealth);
-	void SetSpeed(const float& speed);
+	//Model* bulletPrefab;
 
 	// Inherited via iPlayer
 	void Shoot() override;
 	void Start() override;
-	void Update() override;
-	void AddToRenderer(Renderer& renderer, Shader* shader) override;
-	void AddToPhysics(PhysicsEngine& physicsEngine) override;
+	void Update(float deltaTime) override;
+	
 
+	//Builder function
+	void SetMaxHealth(const float& maxHealth) override;
+	void SetSpeed(const float& speed) override;
 
-	Player() = default;
+	// Inherited via BasePlayer
+	void UpdateVelocity(glm::vec3 velocity) override;
+	void AddToRendererAndPhysics(Renderer& renderer, Shader* shader, PhysicsEngine& physicsEngine) override;
+	void RemoveFromRenderer(Renderer& renderer) override;
+	void RemoveFromPhysics(PhysicsEngine& physicsEngine) override;
 
-	// Inherited via iInputListener
-	void OnKeyPressed(const int& key) override;
-	void OnKeyReleased(const int& key) override;
-	void OnKeyHeld(const int& key) override;
+	// Inherited via BasePlayer
+	void RemoveFromRendererAndPhysics(Renderer& renderer, PhysicsEngine& physicsEngine) override;
 };
 

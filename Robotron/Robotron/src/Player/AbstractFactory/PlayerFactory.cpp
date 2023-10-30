@@ -2,22 +2,15 @@
 #include "../Player.h"
 #include "../Builder/PlayerBuilder.h"
 
-iPlayer* PlayerFactory::CreateBasePlayer()
+BasePlayer* PlayerFactory::CreateBasePlayer()
 {
 	PlayerBuilder playerBuilder;
-
-	playerBuilder.SetMaxHealth(100.0f);
-	playerBuilder.SetSpeed(1.0f);
-
-	return playerBuilder.BuildPlayer();
+	
+	return playerBuilder.SetMaxHealth(100.0f).SetSpeed(5.0f).BuildPlayer();
 }
 
-iPlayer* PlayerFactory::CreateFastPlayer()
+BasePlayer* PlayerFactory::CreateFastPlayer()
 {
 	PlayerBuilder playerBuilder;
-
-	playerBuilder.SetMaxHealth(100.0f);
-	playerBuilder.SetSpeed(3.0f);
-
-	return playerBuilder.BuildPlayer();
+	return playerBuilder.SetMaxHealth(100.0f).SetSpeed(10.0f).BuildPlayer();
 }

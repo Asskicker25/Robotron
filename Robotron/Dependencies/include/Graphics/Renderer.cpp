@@ -2,7 +2,7 @@
 
 void Renderer::Clear()
 {
-	GLCALL(glClearColor(0.1f, 0.3f, 0.4f, 1.0f));
+	GLCALL(glClearColor(backGroundColor.x, backGroundColor.y, backGroundColor.z, 1.0f));
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -19,6 +19,11 @@ void Renderer::AddModel(Model& model, Shader& shader)
 {
 	models.push_back(&model);
 	shaders.push_back(&shader);
+}
+
+void Renderer::SetBackgroundColor(const glm::vec3& backGroundColor)
+{
+	this->backGroundColor = backGroundColor;
 }
 
 void Renderer::Draw()

@@ -63,6 +63,17 @@ void Model::Draw(Shader& shader)
 	}
 }
 
+void Model::CopyFromModel(const Model& model)
+{
+	isActive = model.isActive;
+	meshes = model.meshes;
+	directory = model.directory;
+	transform = model.transform;
+	//material = model.material;
+	loadTextures = model.loadTextures;
+	loadMatProperties = model.loadMatProperties;
+}
+
 void Model::LoadModel(std::string path, bool loadTextures, bool loadMatProperties)
 {
 	this->loadTextures = loadTextures;

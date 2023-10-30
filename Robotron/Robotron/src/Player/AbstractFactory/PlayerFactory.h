@@ -1,14 +1,12 @@
 #pragma once
 
-#include "iPlayerFactory.h"
+#include "../BasePlayer.h"
 
-class PlayerFactory : public iPlayerFactory
+class PlayerFactory 
 {
 public:
 
-	iPlayer* CreateBasePlayer() override;
-
-	// Inherited via iPlayerFactory
-	iPlayer* CreateFastPlayer() override;
+	BasePlayer* CreateBasePlayer();
+	BasePlayer* CreateFastPlayer();
 };
 

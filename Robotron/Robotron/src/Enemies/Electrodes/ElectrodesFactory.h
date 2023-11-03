@@ -10,7 +10,7 @@ public :
 	Shader* shader;
 	PhysicsEngine* physicsEngine;
 
-	BaseElectrode* CreateCubeElectrode();
+	BaseElectrode* CreateSpheroid();
 	void AddComponents(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine);
 
 };

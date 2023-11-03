@@ -26,7 +26,7 @@ void Bullet::CreateBulletInstance(Model* bullet)
 			Entity* other = (Entity*)otherObject->userData;
 			std::string tag = other->tag;
 
-			if (tag == "Electroid")
+			if (tag == "Spheroid")
 			{
 				other->Destroy();
 				Destroy();

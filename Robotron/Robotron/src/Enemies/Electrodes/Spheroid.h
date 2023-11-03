@@ -2,12 +2,12 @@
 
 #include "BaseElectrode.h"
 
-class CubeElectrode : public BaseElectrode
+class Spheroid : public BaseElectrode
 {
 	// Inherited via BaseElectrode
 public:
 
-	CubeElectrode();
+	Spheroid();
 
 	void Start() override;
 	void Update(float deltaTime) override;

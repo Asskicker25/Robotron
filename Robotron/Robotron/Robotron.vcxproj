@@ -139,7 +139,7 @@
   <ItemGroup>
     <ClCompile Include="src\Enemies\Electrodes\ElectroidManaager.cpp" />
     <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.cpp" />
-    <ClCompile Include="src\Enemies\Electrodes\CubeElectrode.cpp" />
+    <ClCompile Include="src\Enemies\Electrodes\Spheroid.cpp" />
     <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.h" />
     <ClCompile Include="src\Enemies\Electrodes\ElectrodesFactory.cpp" />
     <ClCompile Include="src\Player\Bullet\Bullet.cpp" />
@@ -158,7 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Enemies\Electrodes\ElectroidManaager.h" />
-    <ClInclude Include="src\Enemies\Electrodes\CubeElectrode.h" />
+    <ClInclude Include="src\Enemies\Electrodes\Spheroid.h" />
     <ClInclude Include="src\Enemies\Electrodes\ElectrodesFactory.h" />
     <ClInclude Include="src\Player\Bullet\Bullet.h" />
     <ClInclude Include="src\Player\Bullet\BulletFactory.h" />

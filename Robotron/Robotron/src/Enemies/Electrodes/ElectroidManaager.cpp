@@ -19,7 +19,7 @@ ElectroidManaager::PIMPL::PIMPL()
 
 void ElectroidManaager::PIMPL::SpawnElectroids()
 {
-	BaseElectrode* electrode = factory->CreateCubeElectrode();
+	BaseElectrode* electrode = factory->CreateSpheroid();
 
 	electrode->model->transform.SetPosition(glm::vec3(4.0f, 0.0f, 0.0f));
 }

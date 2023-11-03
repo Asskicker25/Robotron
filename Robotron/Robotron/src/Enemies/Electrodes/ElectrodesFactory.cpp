@@ -1,10 +1,10 @@
 #include "ElectrodesFactory.h"
 
-#include "CubeElectrode.h"
+#include "Spheroid.h"
 
-BaseElectrode* ElectrodesFactory::CreateCubeElectrode()
+BaseElectrode* ElectrodesFactory::CreateSpheroid()
 {
-	BaseElectrode* baseElectrode = new CubeElectrode();
+	BaseElectrode* baseElectrode = new Spheroid();
 	
 	renderer->AddModel(baseElectrode->model, shader);
 	physicsEngine->AddPhysicsObject(baseElectrode->phyObj);

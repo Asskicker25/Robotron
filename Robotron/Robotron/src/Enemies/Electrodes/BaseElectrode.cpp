@@ -2,6 +2,9 @@
 
 BaseElectrode::BaseElectrode()
 {
+	model = new Model();
+	phyObj = new PhysicsObject();
+
 }
 
 void BaseElectrode::Start()

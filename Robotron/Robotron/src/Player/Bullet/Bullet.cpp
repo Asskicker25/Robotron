@@ -20,10 +20,18 @@ void Bullet::CreateBulletInstance(Model* bullet)
 {
 	model->CopyFromModel(*bullet);
 	phyObj->Initialize(model, SPHERE, DYNAMIC, TRIGGER, true);
+
 	phyObj->AssignCollisionCallback([this](PhysicsObject* otherObject)
 		{
-			Destroy();
-			Debugger::Print("Bullet Hit");
+			Entity* other = (Entity*)otherObject->userData;
+			std::string tag = other->tag;
+
+			if (tag == "Electroid")
+			{
+				other->Destroy();
+				Destroy();
+				Debugger::Print("Bullet Hit");
+			}
 		});
 }
 

@@ -3,6 +3,7 @@
 #include "InputManager/InputManager.h"
 #include "Player/Builder/PlayerBuilder.h"
 #include "Player/PlayerController.h"
+#include "Enemies/Electrodes/ElectroidManaager.h"
 
 void Robotron::SetUp()
 {
@@ -52,14 +53,16 @@ void Robotron::SetUp()
 	PlayerController* playerController = new PlayerController();
 	playerController->AssignPlayer(player);
 
-	Model* collisionModel = new Model("Assets/Models/DefaultCube.fbx");
+	ElectroidManaager* electroidManager = new ElectroidManaager();
+
+	/*Model* collisionModel = new Model("Assets/Models/DefaultCube.fbx");
 	collisionModel->transform.SetPosition(glm::vec3(4.0f, 0.0f, 0.0f));
 
 	PhysicsObject* collisionPhyObj = new PhysicsObject();
 	collisionPhyObj->Initialize(collisionModel, AABB, STATIC, SOLID, false);
 
 	renderer.AddModel(collisionModel, &defShader);
-	physicsEngine.AddPhysicsObject(collisionPhyObj);
+	physicsEngine.AddPhysicsObject(collisionPhyObj);*/
 
 
 #pragma endregion

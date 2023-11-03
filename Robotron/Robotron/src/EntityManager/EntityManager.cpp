@@ -18,7 +18,10 @@ void EntityManager::AddEntity(const std::string& entityId, Entity* entity)
 
 void EntityManager::AddEntity(Entity* entity)
 {
-	listOfEntities[std::to_string((int)listOfEntities.size())] = entity;
+	std::string entityId = std::to_string((int)listOfEntities.size());
+	entity->entityId = entityId;
+
+	listOfEntities[entityId] = entity;
 
 	entity->AddToRendererAndPhysics(renderer, shader, physicsEngine);
 }

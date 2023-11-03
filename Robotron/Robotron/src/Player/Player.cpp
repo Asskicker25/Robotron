@@ -69,6 +69,8 @@ Player::Player() : pimpl { new Pimpl(this) }
 	model = new Model();
 	phyObj = new PhysicsObject();
 
+	tag = "Player";
+
 	InitializeEntity(this);
 }
 
@@ -126,6 +128,7 @@ void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 
 	phyObj->Initialize(model, AABB, DYNAMIC, SOLID);
 
+	phyObj->userData = this;
 
 	physicsEngine->AddPhysicsObject(phyObj);
 

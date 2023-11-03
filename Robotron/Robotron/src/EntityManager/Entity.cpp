@@ -1,9 +1,13 @@
 #include "Entity.h"
 #include "EntityManager.h"
 
+void Entity::InitializeEntity(Entity* entity)
+{
+	EntityManager::GetInstance().AddEntity(entity);
+}
 
 void Entity::Destroy()
 {
-	Debugger::Print("Destroy Triggered");
-	((EntityManager*)entityManager)->RemoveEntity(entityId);
+	//Debugger::Print("Destroy Triggered");
+	EntityManager::GetInstance().RemoveEntity(entityId);
 }

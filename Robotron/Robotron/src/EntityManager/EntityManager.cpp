@@ -1,11 +1,26 @@
 #include "EntityManager.h"
 #include <Graphics/Renderer.h>
 
+EntityManager& EntityManager::GetInstance()
+{
+	static EntityManager instance;
+	return instance;
+}
+
 void EntityManager::AddEntity(const std::string& entityId, Entity* entity)
 {
 	listOfEntities[entityId] = entity;
 	entity->entityId = entityId;
-	entity->entityManager = this;
+	//entity->entityManager = this;
+
+	entity->AddToRendererAndPhysics(renderer, shader, physicsEngine);
+}
+
+void EntityManager::AddEntity(Entity* entity)
+{
+	listOfEntities[std::to_string((int)listOfEntities.size())] = entity;
+
+	entity->AddToRendererAndPhysics(renderer, shader, physicsEngine);
 }
 
 void EntityManager::RemoveEntity(const std::string& entityId)
@@ -16,7 +31,10 @@ void EntityManager::RemoveEntity(const std::string& entityId)
 		if (it->first == entityId)
 		{
 			Destroy(listOfEntities[entityId]);
-			listOfEntities.erase(it->first);
+
+			entityToRemove.push_back(entityId);
+
+			//listOfEntities.erase(it->first);
 			return;
 		}
 	}
@@ -39,15 +57,28 @@ void EntityManager::RemoveEntity(Entity* entity)
 	}*/
 }
 
-void EntityManager::AddToRendererAndPhysics(Renderer& renderer, Shader* shader, PhysicsEngine& physicsEngine)
+void EntityManager::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
 	this->renderer = renderer;
 	this->physicsEngine = physicsEngine;
+	this->shader = shader;
 
-	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
+	/*for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
 	{
 		it->second->AddToRendererAndPhysics(renderer, shader, physicsEngine);
+	}*/
+}
+
+bool EntityManager::ShouldRemove(const std::string& entityId)
+{
+	for (const std::string& id : entityToRemove)
+	{
+		if (id == entityId)
+		{
+			return true;
+		}
 	}
+	return false;
 }
 
 void EntityManager::Start()
@@ -60,10 +91,18 @@ void EntityManager::Start()
 
 void EntityManager::Update(float deltaTime)
 {
+	for (const std::string& id : entityToRemove)
+	{
+		//delete listOfEntities[id];
+		listOfEntities.erase(id);
+		entityToRemove.erase(std::remove(entityToRemove.begin(), entityToRemove.end(), id), entityToRemove.end());
+	}
+
 	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
 	{
 		it->second->Update(deltaTime);
 	}
+
 }
 
 void EntityManager::Destroy(Entity* entity)

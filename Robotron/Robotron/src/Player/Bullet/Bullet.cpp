@@ -1,11 +1,13 @@
 #include "Bullet.h"
 
-Bullet::Bullet ()
+Bullet::Bullet () 
 {
 	model = new Model();
 	phyObj = new PhysicsObject();
 
 	bulletSpeed = 30.0f;
+
+	InitializeEntity(this);
 }
 
 void Bullet::SetPositionAndDir(glm::vec3 pos, glm::vec3 dir)
@@ -25,10 +27,14 @@ void Bullet::CreateBulletInstance(Model* bullet)
 		});
 }
 
-void Bullet::RemoveFromRendererAndPhysics(Renderer& renderer, PhysicsEngine& physicsEngine)
+void Bullet::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
+{
+}
+
+void Bullet::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)
 {
 	model->isActive = false;
-	physicsEngine.RemovePhysicsObject(phyObj);
+	physicsEngine->RemovePhysicsObject(phyObj);
 }
 
 void Bullet::Start()
@@ -39,17 +45,4 @@ void Bullet::Update(float deltaTime)
 {
 }
 
-
-void Bullet::AddToRendererAndPhysics(Renderer& renderer, Shader* shader, PhysicsEngine& physicsEngine)
-{
-
-}
-
-void Bullet::RemoveFromRenderer(Renderer& renderer)
-{
-}
-
-void Bullet::RemoveFromPhysics(PhysicsEngine& physicsEngine)
-{
-}
 

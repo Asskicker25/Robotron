@@ -1,28 +1,22 @@
+
 #pragma once
 
-#include <Graphics/Renderer.h>
-#include <Physics/PhysicsEngine.h>
-//#include "EntityManager.h"
+#include "../../EntityManager/Entity.h"
 
-class EntityManager;
-
-class Entity
+class BaseElectrode : public Entity
 {
 
 public:
-	std::string entityId;
 
-	std::string tag;
+	Model* model;
+	PhysicsObject* phyObj;
 
-	virtual ~Entity() {};
+	BaseElectrode();
+	virtual ~BaseElectrode() {};
 
-	virtual void InitializeEntity(Entity* entity);
-
+	// Inherited via Entity
 	virtual void Start() = 0;
 	virtual void Update(float deltaTime) = 0;
 	virtual void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) = 0;
 	virtual void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) = 0;
-	virtual void Destroy();
-	
 };
-

@@ -9,7 +9,6 @@ class Robotron : public ApplicationWindow
 private:
 
 public:
-	EntityManager entityManager;
 	PhysicsEngine physicsEngine;
 
 	void SetUp() override;

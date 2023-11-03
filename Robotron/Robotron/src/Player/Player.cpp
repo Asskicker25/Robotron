@@ -69,6 +69,7 @@ Player::Player() : pimpl { new Pimpl(this) }
 	model = new Model();
 	phyObj = new PhysicsObject();
 
+	InitializeEntity(this);
 }
 
 void Player::SetMaxHealth(const float& maxHealth)
@@ -87,41 +88,6 @@ void Player::UpdateVelocity(glm::vec3 velocity)
 	pimpl->CalculateDirection(velocity);
 }
 
-void Player::AddToRendererAndPhysics(Renderer& renderer, Shader* shader, PhysicsEngine& physicsEngine)
-{
-	pimpl->renderer = &renderer;
-	pimpl->shader = shader;
-
-	model->LoadModel("Assets/Models/Player/player1.ply");
-	model->transform.SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-	model->transform.SetRotation(glm::vec3(0.0f, 180.0f, 0.0f));
-	model->transform.SetScale(glm::vec3(0.01f));
-
-	renderer.AddModel(model, shader);
-
-	phyObj->Initialize(model, AABB, DYNAMIC,TRIGGER);
-
-
-	physicsEngine.AddPhysicsObject(phyObj);
-
-	pimpl->bulletFactory->AssignRenderesAndPhysics(&renderer, shader, &physicsEngine,(EntityManager*)entityManager);
-
-}
-
-void Player::RemoveFromRenderer(Renderer& renderer)
-{
-}
-
-void Player::RemoveFromPhysics(PhysicsEngine& physicsEngine)
-{
-}
-
-void Player::RemoveFromRendererAndPhysics(Renderer& renderer, PhysicsEngine& physicsEngine)
-{
-	model->isActive = false;
-	physicsEngine.RemovePhysicsObject(phyObj);
-}
-
 void Player::Shoot()
 {
 	BaseBullet* bullet = pimpl->bulletFactory->CreateBaseBullet();
@@ -135,8 +101,6 @@ void Player::Shoot()
 
 	//PhysicsObject* bulletPhyObj = new PhysicsObject();
 	//bulletPhyObj->Initialize(newBullet, SPHERE, DYNAMIC);
-
-
 }
 
 void Player::Start()
@@ -146,6 +110,32 @@ void Player::Start()
 
 void Player::Update(float deltaTime)
 {
+}
+
+void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
+{
+	pimpl->renderer = renderer;
+	pimpl->shader = shader;
+
+	model->LoadModel("Assets/Models/Player/player1.ply");
+	model->transform.SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+	model->transform.SetRotation(glm::vec3(0.0f, 180.0f, 0.0f));
+	model->transform.SetScale(glm::vec3(0.01f));
+
+	renderer->AddModel(model, shader);
+
+	phyObj->Initialize(model, AABB, DYNAMIC, SOLID);
+
+
+	physicsEngine->AddPhysicsObject(phyObj);
+
+	pimpl->bulletFactory->AssignRenderesAndPhysics(renderer, shader, physicsEngine);
+}
+
+void Player::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)
+{
+	model->isActive = false;
+	physicsEngine->RemovePhysicsObject(phyObj);
 }
 
 

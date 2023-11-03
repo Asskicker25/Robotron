@@ -8,6 +8,7 @@ class PlayerController : public iInputListener, public Entity
 {
 
 public:
+	PlayerController();
 	void AssignPlayer(BasePlayer* player);
 
 private:
@@ -25,12 +26,13 @@ private:
 	void Start() override;
 	void Update(float deltaTime) override;
 
-	// Inherited via Entity
-	void AddToRendererAndPhysics(Renderer& renderer, Shader* shader, PhysicsEngine& physicsEngine) override;
+	
 
 
 	// Inherited via Entity
-	void RemoveFromRendererAndPhysics(Renderer& renderer, PhysicsEngine& physicsEngine) override;
+	void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) override;
+
+	void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) override;
 
 };
 

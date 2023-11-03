@@ -15,10 +15,8 @@ private:
 	Shader* shader;
 	PhysicsEngine* physicsEngine;
 
-	EntityManager* entityManager;
-
 public:
 	BaseBullet* CreateBaseBullet();
-	void AssignRenderesAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine, EntityManager* entityManager);
+	void AssignRenderesAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine);
 };
 

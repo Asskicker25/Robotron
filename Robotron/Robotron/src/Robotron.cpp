@@ -41,6 +41,8 @@ void Robotron::SetUp()
 	
 #pragma endregion
 
+	EntityManager::GetInstance().AddToRendererAndPhysics(&renderer, &defShader, &physicsEngine);
+
 #pragma region Player
 
 	PlayerFactory* playerFactory = new PlayerFactory();
@@ -54,21 +56,18 @@ void Robotron::SetUp()
 	collisionModel->transform.SetPosition(glm::vec3(4.0f, 0.0f, 0.0f));
 
 	PhysicsObject* collisionPhyObj = new PhysicsObject();
-	collisionPhyObj->Initialize(collisionModel, AABB, STATIC, TRIGGER, false);
+	collisionPhyObj->Initialize(collisionModel, AABB, STATIC, SOLID, false);
 
 	renderer.AddModel(collisionModel, &defShader);
 	physicsEngine.AddPhysicsObject(collisionPhyObj);
 
-	entityManager.AddEntity("Player", (Entity*)player);
-	entityManager.AddEntity("PlayerController", (Entity*)playerController);
 
 #pragma endregion
 
 #pragma region EntityManager
 
-	entityManager.AddToRendererAndPhysics(renderer, &defShader,physicsEngine);
 
-	entityManager.Start();
+	EntityManager::GetInstance().Start();
 
 #pragma endregion
 	
@@ -80,7 +79,7 @@ void Robotron::PreRender()
 
 void Robotron::PostRender()
 {
-	entityManager.Update(deltaTime);
+	EntityManager::GetInstance().Update(deltaTime);
 	physicsEngine.Update(deltaTime);
 }
 

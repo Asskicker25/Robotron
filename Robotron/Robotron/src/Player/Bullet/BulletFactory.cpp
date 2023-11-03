@@ -18,18 +18,16 @@ BaseBullet* BulletFactory::CreateBaseBullet()
 	physicsEngine->AddPhysicsObject(bullet->phyObj);
 
 
-	entityManager->AddEntity("Bullet" + std::to_string(bulletCount), bullet);
+	EntityManager::GetInstance().AddEntity("Bullet" + std::to_string(bulletCount), bullet);
 
 	bulletCount++;
 
 	return bullet;
 }
 
-void BulletFactory::AssignRenderesAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine,
-	EntityManager* entityManager)
+void BulletFactory::AssignRenderesAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
 	this->renderer = renderer;
 	this->shader = shader;
 	this->physicsEngine = physicsEngine;
-	this->entityManager = entityManager;
 }

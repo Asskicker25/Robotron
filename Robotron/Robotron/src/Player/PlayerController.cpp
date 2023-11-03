@@ -1,5 +1,10 @@
 #include "PlayerController.h"
 
+PlayerController::PlayerController() 
+{
+	InitializeEntity(this);
+}
+
 void PlayerController::AssignPlayer(BasePlayer* player)
 {
 	this->player = player;
@@ -123,11 +128,11 @@ void PlayerController::Update(float deltaTime)
 	player->UpdateVelocity(currentVelocity);
 }
 
-void PlayerController::AddToRendererAndPhysics(Renderer& renderer, Shader* shader, PhysicsEngine& physicsEngine)
+void PlayerController::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
 }
 
-void PlayerController::RemoveFromRendererAndPhysics(Renderer& renderer, PhysicsEngine& physicsEngine)
+void PlayerController::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)
 {
 }
 

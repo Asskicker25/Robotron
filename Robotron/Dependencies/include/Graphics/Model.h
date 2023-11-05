@@ -13,7 +13,7 @@ public:
 	~Model();
 	Model(std::string path, bool loadTextures = true, bool loadMatProperties = true);
 
-	void Draw(Shader& shader);
+	void Draw(Shader* shader);
 	void CopyFromModel(const Model& model);
 
 	std::string modelId;

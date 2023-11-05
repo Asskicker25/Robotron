@@ -1,8 +1,9 @@
 #pragma once
 #include "../EntityManager/EntityManager.h"
 #include "BasePlayer.h"
+#include "../AnimationHelper/AnimationHelper.h"
 
-class Player : public BasePlayer
+class Player : public BasePlayer, public AnimationHelper
 {
 private:
 

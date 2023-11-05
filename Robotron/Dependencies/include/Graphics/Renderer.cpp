@@ -11,14 +11,47 @@ void Renderer::Clear()
 
 void Renderer::AddModel(Model* model, Shader* shader)
 {
-	models.push_back(model);
-	shaders.push_back(shader);
+	/*models.push_back(model);
+	shaders.push_back(shader);*/
+
+	modelAndShaders.push_back( new  ModelAndShader{ model,shader } );
 }
 
 void Renderer::AddModel(Model& model, Shader& shader)
 {
-	models.push_back(&model);
-	shaders.push_back(&shader);
+	/*models.push_back(&model);
+	shaders.push_back(&shader);*/
+
+	modelAndShaders.push_back(new  ModelAndShader{ &model,&shader });
+
+}
+
+void Renderer::RemoveModel(Model* model)
+{
+	//models.erase(std::remove())
+
+
+	for (ModelAndShader* modelShader : modelAndShaders)
+	{
+		if (modelShader->model == model)
+		{
+			modelAndShaders.erase(std::remove(modelAndShaders.begin(), modelAndShaders.end(), modelShader),modelAndShaders.end());
+			return;
+		}
+	}
+}
+
+void Renderer::RemoveModel(Model& model)
+{
+
+	for (ModelAndShader* modelShader : modelAndShaders)
+	{
+		if (modelShader->model == &model)
+		{
+			modelAndShaders.erase(std::remove(modelAndShaders.begin(), modelAndShaders.end(), modelShader), modelAndShaders.end());
+			return;
+		}
+	}
 }
 
 void Renderer::SetBackgroundColor(const glm::vec3& backGroundColor)
@@ -28,8 +61,9 @@ void Renderer::SetBackgroundColor(const glm::vec3& backGroundColor)
 
 void Renderer::Draw()
 {
-	for (unsigned int i = 0; i < models.size(); i++)
+	for (unsigned int i = 0; i < modelAndShaders.size(); i++)
 	{
-		models[i]->Draw(*shaders[i]);
+		modelAndShaders[i]->model->Draw(modelAndShaders[i]->shader);
+		//models[i]->Draw(*shaders[i]);
 	}
 }

@@ -37,14 +37,14 @@ Model::Model(std::string path, bool loadTextures, bool loadMatProperties)
 	LoadModel(path, loadTextures, loadMatProperties);
 }
 
-void Model::Draw(Shader& shader)
+void Model::Draw(Shader* shader)
 {
 	if (!isActive) return;
 
 	for (unsigned int i = 0; i < meshes.size(); i++)
 	{
-		shader.Bind();
-		shader.SetUniformMat("model", transform.GetTransformMatrix());
+		shader->Bind();
+		shader->SetUniformMat("model", transform.GetTransformMatrix());
 
 		//if (loadMatProperties)
 		//{
@@ -57,7 +57,7 @@ void Model::Draw(Shader& shader)
 
 		if (loadTextures)
 		{
-			shader.SetUniformMat("inverseModel", transform.GetInverseMatrix());
+			shader->SetUniformMat("inverseModel", transform.GetInverseMatrix());
 		}
 		meshes[i]->DrawMesh(shader, loadMatProperties, isWireframe);
 	}

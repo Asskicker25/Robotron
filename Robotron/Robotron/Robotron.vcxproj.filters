@@ -60,10 +60,16 @@
     <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\Electrodes\CubeElectrode.cpp">
+    <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.cpp">
+    <ClCompile Include="src\Enemies\Electrodes\ElectroidManaager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enemies\Electrodes\Spheroid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AnimationHelper\AnimationHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,7 +119,13 @@
     <ClInclude Include="src\Enemies\Electrodes\ElectrodesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\Electrodes\CubeElectrode.h">
+    <ClInclude Include="src\Enemies\Electrodes\ElectroidManaager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enemies\Electrodes\Spheroid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AnimationHelper\AnimationHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

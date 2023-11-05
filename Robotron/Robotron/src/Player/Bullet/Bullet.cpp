@@ -41,7 +41,7 @@ void Bullet::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 
 void Bullet::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)
 {
-	model->isActive = false;
+	renderer->RemoveModel(model);
 	physicsEngine->RemovePhysicsObject(phyObj);
 }
 

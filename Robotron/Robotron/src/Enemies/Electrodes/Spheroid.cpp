@@ -21,13 +21,12 @@ void Spheroid::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physi
 {
 	model->LoadModel("Assets/Models/Enemies/Spheroid/sphereoid6.ply");
 	model->transform.SetScale(glm::vec3(0.01f));
-	//model->LoadModel("Assets/Models/DefaultSphere.fbx");
 
 	phyObj->Initialize(model, AABB, STATIC, TRIGGER);
 }
 
 void Spheroid::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)
 {
-	model->isActive = false;
+	renderer->RemoveModel(model);
 	physicsEngine->RemovePhysicsObject(phyObj);
 }

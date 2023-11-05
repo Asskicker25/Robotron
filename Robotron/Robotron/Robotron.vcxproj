@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AnimationHelper\AnimationHelper.cpp" />
     <ClCompile Include="src\Enemies\Electrodes\ElectroidManaager.cpp" />
     <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.cpp" />
     <ClCompile Include="src\Enemies\Electrodes\Spheroid.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AnimationHelper\AnimationHelper.h" />
     <ClInclude Include="src\Enemies\Electrodes\ElectroidManaager.h" />
     <ClInclude Include="src\Enemies\Electrodes\Spheroid.h" />
     <ClInclude Include="src\Enemies\Electrodes\ElectrodesFactory.h" />

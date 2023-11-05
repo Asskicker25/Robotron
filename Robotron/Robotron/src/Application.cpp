@@ -6,7 +6,7 @@ int main(int argc, char* argv[])
 
 	Debugger::print = true;
 
-	game.InitializeWindow(800, 600);
+	game.InitializeWindow(1366, 768);
 
 	game.Render();
 

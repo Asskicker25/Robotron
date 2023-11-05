@@ -23,7 +23,7 @@ void Robotron::SetUp()
 
 	SetBackgroundColor(glm::vec3(0.1f));
 
-	cameraPos = glm::vec3(0.0f, 1.0f, 10.0f);
+	cameraPos = glm::vec3(0.0f, 1.0f, 20.0f);
 
 #pragma endregion
 

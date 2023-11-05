@@ -1,8 +1,9 @@
 #pragma once
 
 #include "BaseElectrode.h"
+#include "../../AnimationHelper/AnimationHelper.h"
 
-class Spheroid : public BaseElectrode
+class Spheroid : public BaseElectrode, public AnimationHelper
 {
 	// Inherited via BaseElectrode
 public:

@@ -16,5 +16,8 @@ public:
 
 	// Inherited via BaseEnemy
 	void MoveTowardsPlayerPosition(float xPos, float yPos) override;
+
+	// Inherited via BaseEnemy
+	void OnPlayerDead() override;
 };
 

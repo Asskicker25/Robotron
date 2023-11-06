@@ -10,6 +10,7 @@ void EnemiesFactory::AddComponents(Renderer* renderer, Shader* shader, PhysicsEn
 	this->physicsEngine = physicsEngine;
 }
 
+
 BaseEnemy* EnemiesFactory::CreateSpheroid()
 {
 	BaseEnemy* spheroid = new Spheroid();

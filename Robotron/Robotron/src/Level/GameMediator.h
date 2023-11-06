@@ -14,5 +14,6 @@ public:
 	void RemoveEnemy(BaseEnemy* enemy);
 	
 	void UpdatePlayerPosition(float posX, float posY);
+	void OnPlayerDead();
 };
 

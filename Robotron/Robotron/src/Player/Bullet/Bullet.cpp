@@ -5,7 +5,11 @@ Bullet::Bullet ()
 	model = new Model();
 	phyObj = new PhysicsObject();
 
+	phyObj->userData = this;
+
 	bulletSpeed = 30.0f;
+	
+	tag = "Bullet";
 
 	InitializeEntity(this);
 }
@@ -42,6 +46,7 @@ void Bullet::CreateBulletInstance(Model* bullet)
 
 void Bullet::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
+
 }
 
 void Bullet::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)

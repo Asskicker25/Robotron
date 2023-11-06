@@ -1,4 +1,5 @@
 #include "Grunt.h"
+#include "../EnemiesManager.h"
 
 Grunt::Grunt()
 {
@@ -19,7 +20,7 @@ void Grunt::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsE
 	model->LoadModel("Assets/Models/Enemies/Grunt/grunt1.ply");
 	model->transform.SetScale(glm::vec3(0.01f));
 	model->isActive = false;
-	phyObj->Initialize(model, AABB, STATIC, TRIGGER);
+	phyObj->Initialize(model, AABB, DYNAMIC, TRIGGER);
 
 	AssignRendererAndShader(renderer, shader);
 	SetTransformHolder(model);
@@ -39,10 +40,29 @@ void Grunt::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* phys
 
 	renderer->RemoveModel(model);
 	physicsEngine->RemovePhysicsObject(phyObj);
+
+	enemiesManager->RemoveEnemy(this);
 }
 
 void Grunt::MoveTowardsPlayerPosition(float xPos, float yPos)
 {
-	Debugger::Print("PosX", xPos);
-	Debugger::Print("PosY", yPos);
+	glm::vec3 diff = glm::vec3(xPos, yPos, model->transform.position.z) - model->transform.position;
+
+	glm::vec3 dir = glm::normalize(diff);
+
+	float sqDist = glm::dot(diff, diff);
+
+	if (sqDist < minDistance * minDistance)
+	{
+		phyObj->velocity = glm::vec3(0);
+	}
+	else
+	{
+		phyObj->velocity = dir * speed;
+	}
+}
+
+void Grunt::OnPlayerDead()
+{
+	phyObj->velocity = glm::vec3(0);
 }

@@ -9,6 +9,9 @@ public:
 	Grunt();
 
 private:
+
+	float minDistance = 0.5f;
+
 	// Inherited via BaseEnemy
 	void Start() override;
 	void Update(float deltaTime) override;
@@ -17,5 +20,8 @@ private:
 
 	// Inherited via BaseEnemy
 	void MoveTowardsPlayerPosition(float xPos, float yPos) override;
+
+	// Inherited via BaseEnemy
+	void OnPlayerDead() override;
 };
 

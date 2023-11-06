@@ -17,3 +17,11 @@ void GameMediator::UpdatePlayerPosition(float posX, float posY)
 		enemy->MoveTowardsPlayerPosition(posX, posY);
 	}
 }
+
+void GameMediator::OnPlayerDead()
+{
+	for (BaseEnemy* enemy : listOfEnemies)
+	{
+		enemy->OnPlayerDead();
+	}
+}

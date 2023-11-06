@@ -1,4 +1,5 @@
 #include "Spheroid.h"
+#include "../EnemiesManager.h"
 
 Spheroid::Spheroid() 
 {
@@ -47,8 +48,14 @@ void Spheroid::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* p
 	DestroyAnimationModels();
 	renderer->RemoveModel(model);
 	physicsEngine->RemovePhysicsObject(phyObj);
+
+	enemiesManager->RemoveEnemy(this);
 }
 
 void Spheroid::MoveTowardsPlayerPosition(float xPos, float yPos)
+{
+}
+
+void Spheroid::OnPlayerDead()
 {
 }

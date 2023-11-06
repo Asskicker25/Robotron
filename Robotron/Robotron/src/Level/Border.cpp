@@ -24,7 +24,7 @@ void Border::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	leftBorder->transform.SetScale(glm::vec3(0.15f, 8.25f,0.15f));
 	leftBorder->transform.SetPosition(glm::vec3(
 		-14.425f,
-		1.0f,
+		0.0f,
 		0.0f
 	));
 
@@ -33,7 +33,7 @@ void Border::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	rightBorder->transform.SetScale(glm::vec3(0.15f, 8.25f, 0.15f));
 	rightBorder->transform.SetPosition(glm::vec3(
 		14.425f,
-		1.0f,
+		0.0f,
 		0.0f
 	));
 	
@@ -42,7 +42,7 @@ void Border::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	topBorder->transform.SetScale(glm::vec3(14.425f, 0.15f, 0.15f));
 	topBorder->transform.SetPosition(glm::vec3(
 		0.0f,
-		9.1f,
+		8.1f,
 		0.0f
 	));
 
@@ -51,7 +51,7 @@ void Border::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	bottomBorder->transform.SetScale(glm::vec3(14.425f, 0.15f, 0.15f));
 	bottomBorder->transform.SetPosition(glm::vec3(
 		0.0f,
-		-7.1f,
+		-8.1f,
 		0.0f
 	));
 

@@ -3,14 +3,18 @@
 #include "../EntityManager/Entity.h"
 #include "../AnimationHelper/AnimationHelper.h"
 
+class EnemiesManager;
+
 class BaseEnemy : public Entity, public AnimationHelper
 {
 
 public:
-	bool isDestroyed = false;
-
 	Model* model;
 	PhysicsObject* phyObj;
+
+	EnemiesManager* enemiesManager;
+
+	float speed = 3.0f;
 
 	BaseEnemy();
 	virtual ~BaseEnemy() {};
@@ -21,6 +25,7 @@ public:
 	virtual void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) = 0;
 
 	virtual void MoveTowardsPlayerPosition(float xPos, float yPos) = 0;
+	virtual void OnPlayerDead() = 0;
 };
 
  

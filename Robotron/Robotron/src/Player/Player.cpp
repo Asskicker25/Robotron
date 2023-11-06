@@ -21,7 +21,7 @@ class Player::Pimpl
 	float shootYOffset;
 	Player* player;
 
-	float timeStep = 0;
+	float timeStep = 2.0;
 	float posUpdateInterval = 2.0f;
 
 public:
@@ -41,6 +41,8 @@ public:
 	void CalculateAnimationState(const float& deltaTime);
 	void ChangeAnimationState(PlayerAnimationState animationState);
 	void UpdatePlayerPosition(float deltaTime);
+
+	void OnCollision(PhysicsObject* otherObject);
 
 	const glm::vec3& GetFirePosition();
 	const glm::vec3& GetFireDirection();
@@ -117,6 +119,18 @@ void Player::Pimpl::UpdatePlayerPosition(float deltaTime)
 		timeStep = 0;
 
 		player->gameMediator->UpdatePlayerPosition(player->model->transform.position.x, player->model->transform.position.y);
+	}
+}
+
+void Player::Pimpl::OnCollision(PhysicsObject* otherObject)
+{
+	Entity* other = (Entity*)otherObject->userData;
+	std::string tag = other->tag;
+
+	if (tag == "Enemy")
+	{
+		player->Destroy();
+		player->gameMediator->OnPlayerDead();
 	}
 }
 
@@ -202,9 +216,14 @@ void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	model->isActive = false;
 
 	renderer->AddModel(model, shader);
-	phyObj->Initialize(model, AABB, DYNAMIC, SOLID);
+	phyObj->Initialize(model, AABB, DYNAMIC, TRIGGER,true);
 	phyObj->userData = this;
 	physicsEngine->AddPhysicsObject(phyObj);
+
+	phyObj->AssignCollisionCallback([this](PhysicsObject* otherObject)
+		{
+			pimpl->OnCollision(otherObject);
+		});
 
 	pimpl->bulletFactory->AssignRenderesAndPhysics(renderer, shader, physicsEngine);
 
@@ -237,8 +256,11 @@ void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	SetAnimationState(RIGHT);
 }
 
-void Player::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)
+void Player::RemoveFromRendererAndPhysics(Renderer* renderer,
+ PhysicsEngine* physicsEngine)
 {
+	DestroyAnimationModels();
+
 	model->isActive = false;
 	physicsEngine->RemovePhysicsObject(phyObj);
 }

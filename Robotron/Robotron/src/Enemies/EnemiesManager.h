@@ -22,6 +22,7 @@ public:
 	EnemiesManager(GameMediator* gameMediator);
 	
 	void AssignGameMediator(GameMediator* gameMediator);
+	void RemoveEnemy(BaseEnemy* enemy);
 
 };
 

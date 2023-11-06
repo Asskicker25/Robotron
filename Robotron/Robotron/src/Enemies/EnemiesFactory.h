@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BaseEnemy.h"
+#include <Graphics/Model.h>
 
 class EnemiesFactory
 {

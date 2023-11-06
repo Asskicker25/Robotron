@@ -1,6 +1,7 @@
 #include "EnemiesFactory.h"
 
-#include "Electrodes/Spheroid.h"
+#include "Spheroid/Spheroid.h"
+#include "Grunts/Grunt.h"
 
 void EnemiesFactory::AddComponents(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
@@ -11,7 +12,7 @@ void EnemiesFactory::AddComponents(Renderer* renderer, Shader* shader, PhysicsEn
 
 BaseEnemy* EnemiesFactory::CreateSpheroid()
 {
-	Spheroid* spheroid = new Spheroid();
+	BaseEnemy* spheroid = new Spheroid();
 	
 	renderer->AddModel(spheroid->model, shader);
 	physicsEngine->AddPhysicsObject(spheroid->phyObj);
@@ -19,3 +20,12 @@ BaseEnemy* EnemiesFactory::CreateSpheroid()
 	return spheroid;
 }
 
+BaseEnemy* EnemiesFactory::CreateGrunt()
+{
+	BaseEnemy* grunt = new Grunt();
+
+	renderer->AddModel(grunt->model, shader);
+	physicsEngine->AddPhysicsObject(grunt->phyObj);
+
+	return grunt;
+}

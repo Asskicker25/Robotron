@@ -60,7 +60,7 @@
     <ClCompile Include="src\Enemies\EnemiesManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\Electrodes\Spheroid.cpp">
+    <ClCompile Include="src\Enemies\Spheroid\Spheroid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\AnimationHelper\AnimationHelper.cpp">
@@ -70,6 +70,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Enemies\BaseEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enemies\Grunts\Grunt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Level\GameMediator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -122,7 +128,7 @@
     <ClInclude Include="src\Enemies\EnemiesManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\Electrodes\Spheroid.h">
+    <ClInclude Include="src\Enemies\Spheroid\Spheroid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AnimationHelper\AnimationHelper.h">
@@ -132,6 +138,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Enemies\BaseEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enemies\Grunts\Grunt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Level\GameMediator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

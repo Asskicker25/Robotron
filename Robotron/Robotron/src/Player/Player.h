@@ -7,6 +7,7 @@ class Player : public BasePlayer, public AnimationHelper
 {
 private:
 
+	enum PlayerAnimationState;
 	class Pimpl;
 	Pimpl* pimpl;
 

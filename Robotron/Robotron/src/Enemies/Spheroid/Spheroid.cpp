@@ -48,3 +48,7 @@ void Spheroid::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* p
 	renderer->RemoveModel(model);
 	physicsEngine->RemovePhysicsObject(phyObj);
 }
+
+void Spheroid::MoveTowardsPlayerPosition(float xPos, float yPos)
+{
+}

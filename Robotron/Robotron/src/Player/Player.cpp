@@ -3,9 +3,9 @@
 #include "../InputManager/InputManager.h"
 #include "Bullet/BulletFactory.h"
 
-
-enum PlayerAnimationState
+enum Player::PlayerAnimationState
 {
+	NONE = -1,
 	LEFT = 0,
 	RIGHT = 1,
 	UP = 2,
@@ -21,6 +21,9 @@ class Player::Pimpl
 	float shootYOffset;
 	Player* player;
 
+	float timeStep = 0;
+	float posUpdateInterval = 2.0f;
+
 public:
 
 	Renderer* renderer;
@@ -28,14 +31,16 @@ public:
 	BulletFactory* bulletFactory;
 	PhysicsEngine* physicsEngine;
 
-	PlayerAnimationState playerState = LEFT;
+	PlayerAnimationState playerState = PlayerAnimationState::NONE;
 
 	glm::vec3 currentVelocity = glm::vec3(0.0f);
 
 	Pimpl(Player* player);
+
 	const glm::vec3& CalculateDirection(const glm::vec3 velocity);
 	void CalculateAnimationState(const float& deltaTime);
 	void ChangeAnimationState(PlayerAnimationState animationState);
+	void UpdatePlayerPosition(float deltaTime);
 
 	const glm::vec3& GetFirePosition();
 	const glm::vec3& GetFireDirection();
@@ -103,6 +108,18 @@ void Player::Pimpl::ChangeAnimationState(PlayerAnimationState animationState)
 	player->SetAnimationState(playerState);
 }
 
+void Player::Pimpl::UpdatePlayerPosition(float deltaTime)
+{
+	timeStep += deltaTime;
+	
+	if (timeStep > posUpdateInterval)
+	{
+		timeStep = 0;
+
+		player->gameMediator->UpdatePlayerPosition(player->model->transform.position.x, player->model->transform.position.y);
+	}
+}
+
 const glm::vec3& Player::Pimpl::GetFirePosition()
 {
 	return glm::vec3(player->model->transform.position.x,
@@ -125,6 +142,7 @@ Player::Player() : pimpl { new Pimpl(this) }
 	phyObj = new PhysicsObject();
 
 	tag = "Player";
+
 
 	InitializeEntity(this);
 }
@@ -168,6 +186,7 @@ void Player::Start()
 void Player::Update(float deltaTime)
 {
 	pimpl->CalculateAnimationState(deltaTime);
+	pimpl->UpdatePlayerPosition(deltaTime);
 }
 
 void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)

@@ -1,27 +1,21 @@
 #pragma once
 
-#include "../EntityManager/Entity.h"
-#include "../Level/GameMediator.h"
+#include "../BaseEnemy.h"
 
-class EnemiesManager : public Entity
+class Grunt : public BaseEnemy
 {
 
+public:
+	Grunt();
+
 private:
-	class PIMPL;
-
-	PIMPL* pimpl;
-
-	// Inherited via Entity
+	// Inherited via BaseEnemy
 	void Start() override;
 	void Update(float deltaTime) override;
 	void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) override;
 	void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) override;
 
-public:
-
-	EnemiesManager(GameMediator* gameMediator);
-	
-	void AssignGameMediator(GameMediator* gameMediator);
-
+	// Inherited via BaseEnemy
+	void MoveTowardsPlayerPosition(float xPos, float yPos) override;
 };
 

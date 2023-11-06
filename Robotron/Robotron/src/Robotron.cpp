@@ -5,6 +5,7 @@
 #include "Player/PlayerController.h"
 #include "Enemies/EnemiesManager.h"
 #include "Level/Border.h"
+#include "Level/GameMediator.h"
 
 void Robotron::SetUp()
 {
@@ -48,6 +49,7 @@ void Robotron::SetUp()
 #pragma region Level
 
 	Border* border = new Border();
+	GameMediator* gameMediator = new GameMediator();
 
 #pragma endregion
 
@@ -56,6 +58,7 @@ void Robotron::SetUp()
 	PlayerFactory* playerFactory = new PlayerFactory();
 
 	BasePlayer* player =  playerFactory->CreateBasePlayer();
+	player->AssignGameMediator(gameMediator);
 
 	PlayerController* playerController = new PlayerController();
 	playerController->AssignPlayer(player);
@@ -64,7 +67,7 @@ void Robotron::SetUp()
 
 #pragma region Enemies
 
-	EnemiesManager* enemiesManager = new EnemiesManager();
+	EnemiesManager* enemiesManager = new EnemiesManager(gameMediator);
 
 #pragma endregion
 

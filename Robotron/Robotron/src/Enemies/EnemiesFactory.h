@@ -13,5 +13,7 @@ public :
 	void AddComponents(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine);
 
 	BaseEnemy* CreateSpheroid();
+
+	BaseEnemy* CreateGrunt();
 };
 

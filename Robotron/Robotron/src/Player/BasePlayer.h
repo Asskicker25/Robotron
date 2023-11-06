@@ -1,13 +1,19 @@
 #pragma once
 
 #include "../EntityManager/Entity.h"
+#include "../Level/GameMediator.h"
 
 class BasePlayer : public Entity
 {
+
+protected :
+	GameMediator* gameMediator;
+
 public:
 
 	Model* model;
 	PhysicsObject* phyObj;
+
 
 	float speed;
 	float maxHealth;
@@ -25,5 +31,7 @@ public:
 	virtual void Update(float deltaTime) = 0;
 	virtual void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) = 0;
 	virtual void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) = 0;
+
+	void AssignGameMediator(GameMediator* gameMediator);
 };
 

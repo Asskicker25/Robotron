@@ -5,6 +5,7 @@ class EnemiesManager::PIMPL
 {
 public:
 	EnemiesFactory* factory;
+	GameMediator* gameMediator;
 
 	PIMPL();
 	void SpawnEnemies();
@@ -20,15 +21,25 @@ EnemiesManager::PIMPL::PIMPL()
 void EnemiesManager::PIMPL::SpawnEnemies()
 {
 	BaseEnemy* spheroid = factory->CreateSpheroid();
+	BaseEnemy* grunt = factory->CreateGrunt();
 
 	spheroid->model->transform.SetPosition(glm::vec3(4.0f, 0.0f, 0.0f));
+	grunt->model->transform.SetPosition(glm::vec3(-4.0f, 0.0f, 0.0f));
+
+	gameMediator->AddEnemy(grunt);
 }
 
 
-EnemiesManager::EnemiesManager() : pimpl{new PIMPL()}
+EnemiesManager::EnemiesManager(GameMediator* gameMediator) : pimpl{new PIMPL()}
 {
 	InitializeEntity(this);
+	AssignGameMediator(gameMediator);
 	pimpl->SpawnEnemies();
+}
+
+void EnemiesManager::AssignGameMediator(GameMediator* gameMediator)
+{
+	pimpl->gameMediator = gameMediator;
 }
 
 void EnemiesManager::Start()

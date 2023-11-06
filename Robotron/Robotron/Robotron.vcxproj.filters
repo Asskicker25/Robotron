@@ -72,6 +72,9 @@
     <ClCompile Include="src\AnimationHelper\AnimationHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Level\Border.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Robotron.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AnimationHelper\AnimationHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Level\Border.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -32,6 +32,12 @@ void Bullet::CreateBulletInstance(Model* bullet)
 				Destroy();
 				Debugger::Print("Bullet Hit");
 			}
+
+			if (tag == "Border")
+			{
+				Destroy();
+				Debugger::Print("Bullet Hit Border");
+			}
 		});
 }
 

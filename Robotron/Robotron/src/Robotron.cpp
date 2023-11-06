@@ -4,6 +4,7 @@
 #include "Player/Builder/PlayerBuilder.h"
 #include "Player/PlayerController.h"
 #include "Enemies/Electrodes/ElectroidManaager.h"
+#include "Level/Border.h"
 
 void Robotron::SetUp()
 {
@@ -44,6 +45,12 @@ void Robotron::SetUp()
 
 	EntityManager::GetInstance().AddToRendererAndPhysics(&renderer, &defShader, &physicsEngine);
 
+#pragma region Level
+
+	Border* border = new Border();
+
+#pragma endregion
+
 #pragma region Player
 
 	PlayerFactory* playerFactory = new PlayerFactory();
@@ -53,17 +60,11 @@ void Robotron::SetUp()
 	PlayerController* playerController = new PlayerController();
 	playerController->AssignPlayer(player);
 
+#pragma endregion
+
+#pragma region Enemies
+
 	ElectroidManaager* electroidManager = new ElectroidManaager();
-
-	/*Model* collisionModel = new Model("Assets/Models/DefaultCube.fbx");
-	collisionModel->transform.SetPosition(glm::vec3(4.0f, 0.0f, 0.0f));
-
-	PhysicsObject* collisionPhyObj = new PhysicsObject();
-	collisionPhyObj->Initialize(collisionModel, AABB, STATIC, SOLID, false);
-
-	renderer.AddModel(collisionModel, &defShader);
-	physicsEngine.AddPhysicsObject(collisionPhyObj);*/
-
 
 #pragma endregion
 

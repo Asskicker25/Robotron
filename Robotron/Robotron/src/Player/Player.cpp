@@ -215,7 +215,7 @@ void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	AddModelToAnimationList(DOWN, "Assets/Models/Player/player8.ply");
 	AddModelToAnimationList(DOWN, "Assets/Models/Player/player9.ply");
 
-	SetAnimationState(LEFT);
+	SetAnimationState(RIGHT);
 }
 
 void Player::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)

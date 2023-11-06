@@ -1,8 +1,8 @@
 #pragma once
 
-#include "BaseElectrode.h"
+#include "BaseEnemy.h"
 
-class ElectrodesFactory
+class EnemiesFactory
 {
 public :
 
@@ -10,8 +10,8 @@ public :
 	Shader* shader;
 	PhysicsEngine* physicsEngine;
 
-	BaseElectrode* CreateSpheroid();
 	void AddComponents(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine);
 
+	BaseEnemy* CreateSpheroid();
 };
 

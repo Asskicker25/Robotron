@@ -3,7 +3,7 @@
 #include "InputManager/InputManager.h"
 #include "Player/Builder/PlayerBuilder.h"
 #include "Player/PlayerController.h"
-#include "Enemies/Electrodes/ElectroidManaager.h"
+#include "Enemies/EnemiesManager.h"
 #include "Level/Border.h"
 
 void Robotron::SetUp()
@@ -64,7 +64,7 @@ void Robotron::SetUp()
 
 #pragma region Enemies
 
-	ElectroidManaager* electroidManager = new ElectroidManaager();
+	EnemiesManager* enemiesManager = new EnemiesManager();
 
 #pragma endregion
 

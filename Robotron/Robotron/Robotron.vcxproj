@@ -137,13 +137,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Enemies\BaseEnemy.cpp" />
     <ClCompile Include="src\Level\Border.cpp" />
     <ClCompile Include="src\AnimationHelper\AnimationHelper.cpp" />
-    <ClCompile Include="src\Enemies\Electrodes\ElectroidManaager.cpp" />
-    <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.cpp" />
+    <ClCompile Include="src\Enemies\EnemiesManager.cpp" />
     <ClCompile Include="src\Enemies\Electrodes\Spheroid.cpp" />
-    <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.h" />
-    <ClCompile Include="src\Enemies\Electrodes\ElectrodesFactory.cpp" />
+    <ClCompile Include="src\Enemies\EnemiesFactory.cpp" />
     <ClCompile Include="src\Player\Bullet\Bullet.cpp" />
     <ClCompile Include="src\Player\Bullet\BulletFactory.cpp" />
     <ClCompile Include="src\Player\Bullet\BaseBullet.cpp" />
@@ -159,11 +158,12 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Enemies\BaseEnemy.h" />
     <ClInclude Include="src\Level\Border.h" />
     <ClInclude Include="src\AnimationHelper\AnimationHelper.h" />
-    <ClInclude Include="src\Enemies\Electrodes\ElectroidManaager.h" />
+    <ClInclude Include="src\Enemies\EnemiesManager.h" />
     <ClInclude Include="src\Enemies\Electrodes\Spheroid.h" />
-    <ClInclude Include="src\Enemies\Electrodes\ElectrodesFactory.h" />
+    <ClInclude Include="src\Enemies\EnemiesFactory.h" />
     <ClInclude Include="src\Player\Bullet\Bullet.h" />
     <ClInclude Include="src\Player\Bullet\BulletFactory.h" />
     <ClInclude Include="src\Player\Bullet\BaseBullet.h" />

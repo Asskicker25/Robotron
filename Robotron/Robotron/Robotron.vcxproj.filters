@@ -54,16 +54,10 @@
     <ClCompile Include="src\Player\Bullet\BaseBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\Electrodes\ElectrodesFactory.cpp">
+    <ClCompile Include="src\Enemies\EnemiesFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enemies\Electrodes\BaseElectrode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enemies\Electrodes\ElectroidManaager.cpp">
+    <ClCompile Include="src\Enemies\EnemiesManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Enemies\Electrodes\Spheroid.cpp">
@@ -73,6 +67,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Level\Border.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enemies\BaseEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -119,10 +116,10 @@
     <ClInclude Include="src\Player\Bullet\Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\Electrodes\ElectrodesFactory.h">
+    <ClInclude Include="src\Enemies\EnemiesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\Electrodes\ElectroidManaager.h">
+    <ClInclude Include="src\Enemies\EnemiesManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Enemies\Electrodes\Spheroid.h">
@@ -132,6 +129,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Level\Border.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enemies\BaseEnemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

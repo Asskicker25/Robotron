@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../EntityManager/Entity.h"
+#include "../EntityManager/Entity.h"
 
-class ElectroidManaager : public Entity
+class EnemiesManager : public Entity
 {
 
 private:
@@ -12,7 +12,7 @@ private:
 
 public:
 
-	ElectroidManaager();
+	EnemiesManager();
 
 	// Inherited via Entity
 	void Start() override;

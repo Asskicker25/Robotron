@@ -5,8 +5,6 @@ Spheroid::Spheroid()
 
 	InitializeEntity(this);
 
-	tag = "Spheroid";
-
 	phyObj->userData = this;
 
 }

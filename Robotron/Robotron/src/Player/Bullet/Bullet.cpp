@@ -26,7 +26,7 @@ void Bullet::CreateBulletInstance(Model* bullet)
 			Entity* other = (Entity*)otherObject->userData;
 			std::string tag = other->tag;
 
-			if (tag == "Spheroid")
+			if (tag == "Enemy")
 			{
 				other->Destroy();
 				Destroy();
@@ -36,7 +36,6 @@ void Bullet::CreateBulletInstance(Model* bullet)
 			if (tag == "Border")
 			{
 				Destroy();
-				Debugger::Print("Bullet Hit Border");
 			}
 		});
 }

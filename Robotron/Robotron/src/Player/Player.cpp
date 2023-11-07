@@ -182,14 +182,6 @@ void Player::Shoot()
 	BaseBullet* bullet = pimpl->bulletFactory->CreateBaseBullet();
 
 	bullet->SetPositionAndDir(pimpl->GetFirePosition(), pimpl->GetFireDirection());
-
-	//Model* newBullet = new Model();
-
-	////newBullet->CopyFromModel(*bulletPrefab);
-	//
-
-	//PhysicsObject* bulletPhyObj = new PhysicsObject();
-	//bulletPhyObj->Initialize(newBullet, SPHERE, DYNAMIC);
 }
 
 void Player::Start()
@@ -256,13 +248,14 @@ void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	SetAnimationState(RIGHT);
 }
 
-void Player::RemoveFromRendererAndPhysics(Renderer* renderer,
- PhysicsEngine* physicsEngine)
+void Player::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine)
 {
 	DestroyAnimationModels();
 
 	model->isActive = false;
 	physicsEngine->RemovePhysicsObject(phyObj);
+
+	delete this;
 }
 
 

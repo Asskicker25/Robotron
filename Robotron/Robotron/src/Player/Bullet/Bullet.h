@@ -6,8 +6,9 @@ class Bullet : public BaseBullet
 {
 
 public:
-	Bullet();
 
+	Bullet();
+	~Bullet();
 
 	// Inherited via BaseBullet
 	void Start() override;

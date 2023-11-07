@@ -96,7 +96,8 @@ void EntityManager::Update(float deltaTime)
 {
 	for (const std::string& id : entityToRemove)
 	{
-		//delete listOfEntities[id];
+		/*Debugger::Print("ID : ", id);
+		delete (listOfEntities[id]);*/
 		listOfEntities.erase(id);
 		entityToRemove.erase(std::remove(entityToRemove.begin(), entityToRemove.end(), id), entityToRemove.end());
 	}

@@ -26,9 +26,6 @@ private:
 	void Start() override;
 	void Update(float deltaTime) override;
 
-	
-
-
 	// Inherited via Entity
 	void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) override;
 

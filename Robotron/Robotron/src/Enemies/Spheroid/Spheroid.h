@@ -5,19 +5,27 @@
 class Spheroid : public BaseEnemy
 {
 	// Inherited via BaseElectrode
+
+private:
+
+	glm::vec3 moveDir = glm::vec3(0.0f);
+
+	void Start() override;
+	void UpdateEnemy(float deltaTime) override;
+	void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) override;
+	void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) override;
+
+	void ChangeDirection();
+
+	void OnCollision(PhysicsObject* otherObject);
+
 public:
 
 	Spheroid();
 
-	void Start() override;
-	void Update(float deltaTime) override;
-	void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) override;
-	void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) override;
-
-	// Inherited via BaseEnemy
 	void MoveTowardsPlayerPosition(float xPos, float yPos) override;
-
-	// Inherited via BaseEnemy
 	void OnPlayerDead() override;
+
+
 };
 

@@ -12,7 +12,7 @@ void Grunt::Start()
 {
 }
 
-void Grunt::Update(float deltaTime)
+void Grunt::UpdateEnemy(float deltaTime)
 {
 	UpdateAnimation(deltaTime);
 }

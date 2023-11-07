@@ -14,6 +14,11 @@ Bullet::Bullet ()
 	InitializeEntity(this);
 }
 
+Bullet::~Bullet()
+{
+	Debugger::Print("Destructor called");
+}
+
 void Bullet::SetPositionAndDir(glm::vec3 pos, glm::vec3 dir)
 {
 	model->transform.SetPosition(pos);

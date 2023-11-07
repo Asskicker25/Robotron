@@ -21,6 +21,8 @@ public:
 	static constexpr float spawnXRange = 12.5f;
 	static constexpr float spawnYRange = 5.5f;
 
+	static constexpr float centerRadius = 5.0f;
+
 	PIMPL();
 
 	void SpawnEnemies();
@@ -51,8 +53,10 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 		BaseEnemy* spheroid = factory->CreateSpheroid();
 		spheroid->enemiesManager = enemiesManager;
 
-		randomPosX = GetRandomFloatNumber(-spawnXRange, spawnXRange);
-		randomPosY = GetRandomFloatNumber(-spawnYRange, spawnYRange);
+		do {
+			randomPosX = GetRandomFloatNumber(-spawnXRange, spawnXRange);
+			randomPosY = GetRandomFloatNumber(-spawnYRange, spawnYRange);
+		} while (std::abs(randomPosX) < centerRadius && std::abs(randomPosY) < centerRadius);
 
 		spheroid->model->transform.SetPosition(glm::vec3(randomPosX, randomPosY, 0.0f));
 
@@ -64,8 +68,11 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 		BaseEnemy* grunt = factory->CreateGrunt();
 		grunt->enemiesManager = enemiesManager;
 
-		randomPosX = GetRandomFloatNumber(-spawnXRange, spawnXRange);
-		randomPosY = GetRandomFloatNumber(-spawnYRange, spawnYRange);
+		do {
+			randomPosX = GetRandomFloatNumber(-spawnXRange, spawnXRange);
+			randomPosY = GetRandomFloatNumber(-spawnYRange, spawnYRange);
+		} while (std::abs(randomPosX) < centerRadius && std::abs(randomPosY) < centerRadius);
+
 		grunt->model->transform.SetPosition(glm::vec3(randomPosX, randomPosY, 0.0f));
 
 		gameMediator->AddEnemy(grunt);

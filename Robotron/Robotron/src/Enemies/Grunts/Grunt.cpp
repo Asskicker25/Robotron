@@ -5,7 +5,7 @@ Grunt::Grunt()
 {
 	InitializeEntity(this);
 
-	score = 50;
+	score = 100;
 }
 
 void Grunt::Start()

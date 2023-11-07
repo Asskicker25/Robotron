@@ -7,7 +7,7 @@ Spheroid::Spheroid()
 
 	phyObj->userData = this;
 
-	score = 100;
+	score = 1000;
 
 }
 

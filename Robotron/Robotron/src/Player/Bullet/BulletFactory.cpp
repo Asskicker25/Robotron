@@ -6,8 +6,9 @@ BaseBullet* BulletFactory::CreateBaseBullet()
 {
 	if (baseBulletPrefab == nullptr)
 	{
-		baseBulletPrefab = new Model("Assets/Models/DefaultSphere.fbx");
-		baseBulletPrefab->transform.SetScale(glm::vec3(0.1f));
+		baseBulletPrefab = new Model("Assets/Models/DefaultCube.fbx");
+		baseBulletPrefab->transform.SetScale(glm::vec3(0.05f));
+		baseBulletPrefab->meshes[0]->material->SetBaseColor(glm::vec3(0.0f, 1.0f, 0.0f));
 	}
 
 	Bullet* bullet = new Bullet();

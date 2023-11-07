@@ -34,8 +34,6 @@ void Bullet::CreateBulletInstance(Model* bullet)
 			{
 				other->Destroy();
 				Destroy();
-
-				Debugger::Print("Bullet Hit");
 			}
 
 			if (tag == "Border")

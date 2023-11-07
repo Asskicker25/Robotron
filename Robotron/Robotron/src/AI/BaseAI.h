@@ -3,9 +3,7 @@
 #include "../EntityManager/Entity.h"
 #include "../AnimationHelper/AnimationHelper.h"
 
-class EnemiesManager;
-
-class BaseEnemy : public Entity, public AnimationHelper
+class BaseAI : public Entity, public AnimationHelper
 {
 
 private:
@@ -19,23 +17,21 @@ private:
 	glm::vec2 GetRandomDirection();
 	void UpdateRandomMoveDirection(float deltaTime);
 
-
 public:
 	Model* model;
 	PhysicsObject* phyObj;
-
-	EnemiesManager* enemiesManager;
 
 	float speed = 3.0f;
 	float score = 0;
 
 	bool isMovingRandom = false;
 
-	BaseEnemy();
-	virtual ~BaseEnemy() {};
+
+	BaseAI();
+	virtual ~BaseAI() {};
 
 	virtual void Start() = 0;
-	virtual void UpdateEnemy(float deltaTime) = 0;
+	virtual void UpdateAI(float deltaTime) = 0;
 	virtual void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) = 0;
 	virtual void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) = 0;
 
@@ -46,7 +42,5 @@ public:
 	void Update(float deltaTime) override;
 
 	void ChangeRandomDirection();
-
 };
 
- 

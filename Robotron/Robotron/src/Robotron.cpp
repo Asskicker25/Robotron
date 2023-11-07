@@ -3,10 +3,11 @@
 #include "InputManager/InputManager.h"
 #include "Player/Builder/PlayerBuilder.h"
 #include "Player/PlayerController.h"
-#include "Enemies/EnemiesManager.h"
+#include "AI/Enemies/EnemiesManager.h"
 #include "Level/Border.h"
 #include "Level/GameMediator.h"
 #include "Level/Score.h"
+#include "AI/Humans/HumansManager.h"
 
 void Robotron::SetUp()
 {
@@ -76,6 +77,8 @@ void Robotron::SetUp()
 #pragma region Enemies
 
 	EnemiesManager* enemiesManager = new EnemiesManager(gameMediator);
+
+	HumansManager* humansManager = new HumansManager();
 
 #pragma endregion
 

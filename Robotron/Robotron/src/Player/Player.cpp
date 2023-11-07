@@ -132,6 +132,12 @@ void Player::Pimpl::OnCollision(PhysicsObject* otherObject)
 		player->Destroy();
 		player->gameMediator->OnPlayerDead();
 	}
+
+	if (tag == "Human")
+	{
+		other->Destroy();
+		player->gameMediator->AddScore(1000);
+	}
 }
 
 const glm::vec3& Player::Pimpl::GetFirePosition()
@@ -203,7 +209,7 @@ void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	model->LoadModel("Assets/Models/Player/player4.ply");
 	model->transform.SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 	model->transform.SetRotation(glm::vec3(0.0f, 0.0f, 0.0f));
-	model->transform.SetScale(glm::vec3(0.005f));
+	model->transform.SetScale(glm::vec3(0.0075f));
 	model->isActive = false;
 
 	renderer->AddModel(model, shader);

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../EntityManager/Entity.h"
-#include "../Level/GameMediator.h"
+#include "../../EntityManager/Entity.h"
+#include "../../Level/GameMediator.h"
 
 class EnemiesManager : public Entity
 {

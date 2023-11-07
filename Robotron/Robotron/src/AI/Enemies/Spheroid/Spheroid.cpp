@@ -16,7 +16,7 @@ void Spheroid::Start()
 {
 }
 
-void Spheroid::UpdateEnemy(float deltaTime)
+void Spheroid::UpdateAI(float deltaTime)
 {
 	UpdateAnimation(deltaTime);
 }

@@ -54,13 +54,13 @@
     <ClCompile Include="src\Player\Bullet\BaseBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\EnemiesFactory.cpp">
+    <ClCompile Include="src\AI\Enemies\EnemiesFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\EnemiesManager.cpp">
+    <ClCompile Include="src\AI\Enemies\EnemiesManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\Spheroid\Spheroid.cpp">
+    <ClCompile Include="src\AI\Enemies\Spheroid\Spheroid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\AnimationHelper\AnimationHelper.cpp">
@@ -69,16 +69,25 @@
     <ClCompile Include="src\Level\Border.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\BaseEnemy.cpp">
+    <ClCompile Include="src\AI\Enemies\BaseEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enemies\Grunts\Grunt.cpp">
+    <ClCompile Include="src\AI\Enemies\Grunts\Grunt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Level\GameMediator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Level\Score.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\BaseAI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\Humans\Human.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\Humans\HumansManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,13 +134,13 @@
     <ClInclude Include="src\Player\Bullet\Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\EnemiesFactory.h">
+    <ClInclude Include="src\AI\Enemies\EnemiesFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\EnemiesManager.h">
+    <ClInclude Include="src\AI\Enemies\EnemiesManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\Spheroid\Spheroid.h">
+    <ClInclude Include="src\AI\Enemies\Spheroid\Spheroid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AnimationHelper\AnimationHelper.h">
@@ -140,16 +149,25 @@
     <ClInclude Include="src\Level\Border.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\BaseEnemy.h">
+    <ClInclude Include="src\AI\Enemies\BaseEnemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enemies\Grunts\Grunt.h">
+    <ClInclude Include="src\AI\Enemies\Grunts\Grunt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Level\GameMediator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Level\Score.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AI\BaseAI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AI\Humans\Human.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AI\Humans\HumansManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "../Enemies/BaseEnemy.h"
+#include "../AI/Enemies/BaseEnemy.h"
 #include "Score.h"
 
 class PlayerController;

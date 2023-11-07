@@ -1,6 +1,6 @@
 #include "EnemiesManager.h"
 #include "EnemiesFactory.h"
-#include "../Utilities/Random.h"
+#include "../../Utilities/Random.h"
 
 class EnemiesManager::PIMPL
 {
@@ -39,11 +39,11 @@ EnemiesManager::PIMPL::PIMPL()
 void EnemiesManager::PIMPL::SpawnEnemies()
 {
 
-	int spheroidCount = GetRandomIntNumber(spheroidCountMin, spheroidCountMax);
-	int gruntCount = GetRandomIntNumber(gruntCountMin, gruntCountMax);
+	/*int spheroidCount = GetRandomIntNumber(spheroidCountMin, spheroidCountMax);
+	int gruntCount = GetRandomIntNumber(gruntCountMin, gruntCountMax);*/
 
-	/*int spheroidCount = 0;
-	int gruntCount = 0;*/
+	int spheroidCount = 0;
+	int gruntCount = 0;
 
 	float randomPosX = 0;
 	float randomPosY = 0;

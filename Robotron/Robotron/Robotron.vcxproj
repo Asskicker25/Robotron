@@ -137,15 +137,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AI\Humans\HumansManager.cpp" />
+    <ClCompile Include="src\AI\Humans\Human.cpp" />
+    <ClCompile Include="src\AI\BaseAI.cpp" />
     <ClCompile Include="src\Level\Score.cpp" />
     <ClCompile Include="src\Level\GameMediator.cpp" />
-    <ClCompile Include="src\Enemies\Grunts\Grunt.cpp" />
-    <ClCompile Include="src\Enemies\BaseEnemy.cpp" />
+    <ClCompile Include="src\AI\Enemies\Grunts\Grunt.cpp" />
+    <ClCompile Include="src\AI\Enemies\BaseEnemy.cpp" />
     <ClCompile Include="src\Level\Border.cpp" />
     <ClCompile Include="src\AnimationHelper\AnimationHelper.cpp" />
-    <ClCompile Include="src\Enemies\EnemiesManager.cpp" />
-    <ClCompile Include="src\Enemies\Spheroid\Spheroid.cpp" />
-    <ClCompile Include="src\Enemies\EnemiesFactory.cpp" />
+    <ClCompile Include="src\AI\Enemies\EnemiesManager.cpp" />
+    <ClCompile Include="src\AI\Enemies\Spheroid\Spheroid.cpp" />
+    <ClCompile Include="src\AI\Enemies\EnemiesFactory.cpp" />
     <ClCompile Include="src\Player\Bullet\Bullet.cpp" />
     <ClCompile Include="src\Player\Bullet\BulletFactory.cpp" />
     <ClCompile Include="src\Player\Bullet\BaseBullet.cpp" />
@@ -161,15 +164,18 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AI\Humans\HumansManager.h" />
+    <ClInclude Include="src\AI\Humans\Human.h" />
+    <ClInclude Include="src\AI\BaseAI.h" />
     <ClInclude Include="src\Level\Score.h" />
     <ClInclude Include="src\Level\GameMediator.h" />
-    <ClInclude Include="src\Enemies\Grunts\Grunt.h" />
-    <ClInclude Include="src\Enemies\BaseEnemy.h" />
+    <ClInclude Include="src\AI\Enemies\Grunts\Grunt.h" />
+    <ClInclude Include="src\AI\Enemies\BaseEnemy.h" />
     <ClInclude Include="src\Level\Border.h" />
     <ClInclude Include="src\AnimationHelper\AnimationHelper.h" />
-    <ClInclude Include="src\Enemies\EnemiesManager.h" />
-    <ClInclude Include="src\Enemies\Spheroid\Spheroid.h" />
-    <ClInclude Include="src\Enemies\EnemiesFactory.h" />
+    <ClInclude Include="src\AI\Enemies\EnemiesManager.h" />
+    <ClInclude Include="src\AI\Enemies\Spheroid\Spheroid.h" />
+    <ClInclude Include="src\AI\Enemies\EnemiesFactory.h" />
     <ClInclude Include="src\Player\Bullet\Bullet.h" />
     <ClInclude Include="src\Player\Bullet\BulletFactory.h" />
     <ClInclude Include="src\Player\Bullet\BaseBullet.h" />

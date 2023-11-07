@@ -2,7 +2,7 @@
 
 #include "Spheroid/Spheroid.h"
 #include "Grunts/Grunt.h"
-#include "../EntityManager/EntityManager.h"
+#include "../../EntityManager/EntityManager.h"
 
 void EnemiesFactory::AddComponents(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {

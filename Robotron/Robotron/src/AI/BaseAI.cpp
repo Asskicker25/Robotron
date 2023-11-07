@@ -1,4 +1,4 @@
-#include "BaseEnemy.h"
+#include "BaseAI.h"
 #include "../Utilities/Random.h"
 
 const glm::vec2 directions[] = {
@@ -12,10 +12,8 @@ const glm::vec2 directions[] = {
 		glm::vec2(1, -1)    // DOWNRIGHT
 };
 
-BaseEnemy::BaseEnemy()
+BaseAI::BaseAI()
 {
-	tag = "Enemy";
-
 	model = new Model();
 	phyObj = new PhysicsObject();
 
@@ -25,7 +23,8 @@ BaseEnemy::BaseEnemy()
 	timeStep = dirChangeInterval;
 }
 
-glm::vec2 BaseEnemy::GetRandomDirection()
+
+glm::vec2 BaseAI::GetRandomDirection()
 {
 	int randomDirIndex = -1;
 
@@ -40,9 +39,7 @@ glm::vec2 BaseEnemy::GetRandomDirection()
 	return glm::normalize(directions[currentDirection]);
 }
 
-
-
-void BaseEnemy::UpdateRandomMoveDirection(float deltaTime)
+void BaseAI::UpdateRandomMoveDirection(float deltaTime)
 {
 	if (!isMovingRandom) return;
 
@@ -54,13 +51,13 @@ void BaseEnemy::UpdateRandomMoveDirection(float deltaTime)
 	}
 }
 
-void BaseEnemy::Update(float deltaTime)
+void BaseAI::Update(float deltaTime)
 {
-	UpdateEnemy(deltaTime);
+	UpdateAI(deltaTime);
 	UpdateRandomMoveDirection(deltaTime);
 }
 
-void BaseEnemy::ChangeRandomDirection()
+void BaseAI::ChangeRandomDirection()
 {
 	dirChangeInterval = GetRandomFloatNumber(dirChangeIntervalMin, dirChangeIntervalMax);
 	timeStep = 0;

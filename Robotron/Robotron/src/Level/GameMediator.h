@@ -4,12 +4,15 @@
 #include "../Enemies/BaseEnemy.h"
 #include "Score.h"
 
+class PlayerController;
+
 class GameMediator
 {
 private:
 	std::vector<BaseEnemy* > listOfEnemies;
 
 	Score* score;
+	PlayerController* playerController;
 
 public:
 
@@ -17,6 +20,7 @@ public:
 	void RemoveEnemy(BaseEnemy* enemy);
 
 	void AssignScore(Score* score);
+	void AssignPlayerController(PlayerController* playerController);
 	
 	void UpdatePlayerPosition(float posX, float posY);
 	void OnPlayerDead();

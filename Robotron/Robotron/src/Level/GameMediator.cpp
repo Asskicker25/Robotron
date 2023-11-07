@@ -1,4 +1,5 @@
 #include "GameMediator.h"
+#include "../Player/PlayerController.h"
 
 void GameMediator::AddEnemy(BaseEnemy* enemy)
 {
@@ -15,6 +16,11 @@ void GameMediator::AssignScore(Score* score)
 	this->score = score;
 }
 
+void GameMediator::AssignPlayerController(PlayerController* playerController)
+{
+	this->playerController = playerController;
+}
+
 void GameMediator::UpdatePlayerPosition(float posX, float posY)
 {
 	for (BaseEnemy* enemy : listOfEnemies)
@@ -29,6 +35,8 @@ void GameMediator::OnPlayerDead()
 	{
 		enemy->OnPlayerDead();
 	}
+
+	playerController->OnPlayerDead();
 }
 
 void GameMediator::AddScore(int score)

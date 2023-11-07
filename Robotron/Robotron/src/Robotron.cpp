@@ -68,6 +68,8 @@ void Robotron::SetUp()
 
 	PlayerController* playerController = new PlayerController();
 	playerController->AssignPlayer(player);
+	
+	gameMediator->AssignPlayerController(playerController);
 
 #pragma endregion
 

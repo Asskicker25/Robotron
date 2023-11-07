@@ -11,8 +11,6 @@ private:
 	class Pimpl;
 	Pimpl* pimpl;
 
-
-
 public:
 	Player();
 

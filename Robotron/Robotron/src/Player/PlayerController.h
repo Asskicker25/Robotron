@@ -11,7 +11,10 @@ public:
 	PlayerController();
 	void AssignPlayer(BasePlayer* player);
 
+	void OnPlayerDead();
+
 private:
+	
 	BasePlayer* player;
 	PhysicsObject* phyObj;
 

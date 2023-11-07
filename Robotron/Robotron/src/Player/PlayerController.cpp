@@ -1,6 +1,6 @@
 #include "PlayerController.h"
 
-PlayerController::PlayerController() 
+PlayerController::PlayerController()
 {
 	entityId = "PlayerController";
 	InitializeEntity(this);
@@ -12,8 +12,15 @@ void PlayerController::AssignPlayer(BasePlayer* player)
 	phyObj = player->phyObj;
 }
 
+void PlayerController::OnPlayerDead()
+{
+	player = nullptr;
+}
+
 void PlayerController::OnKeyPressed(const int& key)
 {
+
+	if (player == nullptr) return;
 
 #pragma region Movement
 
@@ -79,6 +86,8 @@ void PlayerController::OnKeyPressed(const int& key)
 void PlayerController::OnKeyReleased(const int& key)
 {
 
+	if (player == nullptr) return;
+
 #pragma region Movement
 	if (key == GLFW_KEY_A)
 	{
@@ -126,6 +135,8 @@ void PlayerController::Start()
 
 void PlayerController::Update(float deltaTime)
 {
+	if (player == nullptr) return;
+
 	player->UpdateVelocity(currentVelocity);
 }
 

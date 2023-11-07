@@ -251,7 +251,8 @@ void Player::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* phy
 {
 	DestroyAnimationModels();
 
-	model->isActive = false;
+	renderer->RemoveModel(model);
+	//model->isActive = false;
 	physicsEngine->RemovePhysicsObject(phyObj);
 }
 

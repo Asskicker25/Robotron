@@ -3,8 +3,6 @@
 
 Grunt::Grunt()
 {
-	InitializeEntity(this);
-
 	score = 100;
 }
 

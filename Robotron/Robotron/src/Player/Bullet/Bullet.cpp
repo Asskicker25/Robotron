@@ -10,13 +10,10 @@ Bullet::Bullet ()
 	bulletSpeed = 30.0f;
 	
 	tag = "Bullet";
-
-	InitializeEntity(this);
 }
 
 Bullet::~Bullet()
 {
-	Debugger::Print("Destructor called");
 }
 
 void Bullet::SetPositionAndDir(glm::vec3 pos, glm::vec3 dir)

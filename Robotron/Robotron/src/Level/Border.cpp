@@ -2,8 +2,9 @@
 
 Border::Border()
 {
-	InitializeEntity(this);
 	tag = "Border";
+	entityId = "Border";
+	InitializeEntity(this);
 }
 
 void Border::Start()

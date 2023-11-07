@@ -2,6 +2,7 @@
 
 PlayerController::PlayerController() 
 {
+	entityId = "PlayerController";
 	InitializeEntity(this);
 }
 

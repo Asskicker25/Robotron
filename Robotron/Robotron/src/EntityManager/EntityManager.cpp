@@ -96,15 +96,22 @@ void EntityManager::Update(float deltaTime)
 {
 	for (const std::string& id : entityToRemove)
 	{
-		/*Debugger::Print("ID : ", id);
-		delete (listOfEntities[id]);*/
+		delete (listOfEntities[id]);
 		listOfEntities.erase(id);
-		entityToRemove.erase(std::remove(entityToRemove.begin(), entityToRemove.end(), id), entityToRemove.end());
 	}
 
-	for (it = listOfEntities.begin(); it != listOfEntities.end(); ++it)
+	entityToRemove.clear();
+
+	try
 	{
-		it->second->Update(deltaTime);
+		for (std::pair<const std::string&, Entity*> item : listOfEntities)
+		{
+			item.second->Update(deltaTime);
+		}
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 
 }

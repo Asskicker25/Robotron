@@ -5,6 +5,9 @@
 
 class EnemiesFactory
 {
+private:
+	int currentCount = 0;
+
 public :
 
 	Renderer* renderer;

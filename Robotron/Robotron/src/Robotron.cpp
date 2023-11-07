@@ -79,7 +79,6 @@ void Robotron::SetUp()
 
 #pragma region EntityManager
 
-
 	EntityManager::GetInstance().Start();
 
 #pragma endregion

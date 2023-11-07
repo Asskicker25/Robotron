@@ -156,8 +156,7 @@ Player::Player() : pimpl { new Pimpl(this) }
 	phyObj = new PhysicsObject();
 
 	tag = "Player";
-
-
+	entityId = "Player";
 	InitializeEntity(this);
 }
 
@@ -254,8 +253,6 @@ void Player::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* phy
 
 	model->isActive = false;
 	physicsEngine->RemovePhysicsObject(phyObj);
-
-	delete this;
 }
 
 

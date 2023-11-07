@@ -3,8 +3,6 @@
 
 Spheroid::Spheroid() 
 {
-	InitializeEntity(this);
-
 	phyObj->userData = this;
 
 	score = 1000;

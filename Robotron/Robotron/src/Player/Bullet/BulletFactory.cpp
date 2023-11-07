@@ -13,11 +13,14 @@ BaseBullet* BulletFactory::CreateBaseBullet()
 
 	Bullet* bullet = new Bullet();
 
+	//bullet->entityId = "Bullet" + std::to_string(bulletCount);
+
 	bullet->CreateBulletInstance(baseBulletPrefab);
 
 	renderer->AddModel(bullet->model, shader);
 	physicsEngine->AddPhysicsObject(bullet->phyObj);
 
+	//bullet->InitializeEntity(bullet);
 
 	EntityManager::GetInstance().AddEntity("Bullet" + std::to_string(bulletCount), bullet);
 

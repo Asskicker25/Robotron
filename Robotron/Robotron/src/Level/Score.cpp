@@ -2,6 +2,7 @@
 
 Score::Score()
 {
+	entityId = "Score";
 	InitializeEntity(this);
 
 	zero = new Model("Assets/Models/Score/largefont0.ply");

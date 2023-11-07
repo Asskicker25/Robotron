@@ -42,8 +42,8 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 	int spheroidCount = GetRandomIntNumber(spheroidCountMin, spheroidCountMax);
 	int gruntCount = GetRandomIntNumber(gruntCountMin, gruntCountMax);
 
-	/*int spheroidCount = 1;
-	int gruntCount = 1;*/
+	/*int spheroidCount = 0;
+	int gruntCount = 0;*/
 
 	float randomPosX = 0;
 	float randomPosY = 0;
@@ -91,6 +91,7 @@ void EnemiesManager::PIMPL::RemoveEnemy(BaseEnemy* baseEnemy)
 
 EnemiesManager::EnemiesManager(GameMediator* gameMediator) : pimpl{new PIMPL()}
 {
+	entityId = "EnemiesManager";
 	InitializeEntity(this);
 	AssignGameMediator(gameMediator);
 

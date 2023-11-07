@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Level\Score.cpp" />
     <ClCompile Include="src\Level\GameMediator.cpp" />
     <ClCompile Include="src\Enemies\Grunts\Grunt.cpp" />
     <ClCompile Include="src\Enemies\BaseEnemy.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Level\Score.h" />
     <ClInclude Include="src\Level\GameMediator.h" />
     <ClInclude Include="src\Enemies\Grunts\Grunt.h" />
     <ClInclude Include="src\Enemies\BaseEnemy.h" />

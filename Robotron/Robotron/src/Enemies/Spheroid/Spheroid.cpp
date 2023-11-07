@@ -3,10 +3,11 @@
 
 Spheroid::Spheroid() 
 {
-
 	InitializeEntity(this);
 
 	phyObj->userData = this;
+
+	score = 100;
 
 }
 
@@ -22,13 +23,13 @@ void Spheroid::Update(float deltaTime)
 void Spheroid::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
 	model->LoadModel("Assets/Models/Enemies/Spheroid/sphereoid6.ply");
-	model->transform.SetScale(glm::vec3(0.01f));
+	model->transform.SetScale(glm::vec3(0.0075f));
 	model->isActive = false;
 	phyObj->Initialize(model, AABB, STATIC, TRIGGER);
 
 	AssignRendererAndShader(renderer, shader);
 	SetTransformHolder(model);
-	SetModelScale(0.01f);
+	SetModelScale(0.0075f);
 	SetAnimationInterval(0.1f);
 
 	AddModelToAnimationList(0, "Assets/Models/Enemies/Spheroid/sphereoid1.ply");

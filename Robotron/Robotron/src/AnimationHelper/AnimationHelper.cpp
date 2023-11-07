@@ -97,6 +97,7 @@ void AnimationHelper::DestroyAnimationModels()
 	{
 		for (Model* model : models)
 		{
+			model->isActive = false;
 			renderer->RemoveModel(model);
 			
 			delete model;

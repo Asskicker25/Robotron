@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../EntityManager/EntityManager.h"
+#include "../../Level/GameMediator.h"
 
 class BaseBullet : public Entity
 {

@@ -6,6 +6,7 @@
 #include "Enemies/EnemiesManager.h"
 #include "Level/Border.h"
 #include "Level/GameMediator.h"
+#include "Level/Score.h"
 
 void Robotron::SetUp()
 {
@@ -25,7 +26,7 @@ void Robotron::SetUp()
 
 	SetBackgroundColor(glm::vec3(0.1f));
 
-	cameraPos = glm::vec3(0.0f, 0.0f, 20.0f);
+	cameraPos = glm::vec3(0.0f, 1.0f, 20.0f);
 
 #pragma endregion
 
@@ -49,7 +50,12 @@ void Robotron::SetUp()
 #pragma region Level
 
 	Border* border = new Border();
+
 	GameMediator* gameMediator = new GameMediator();
+
+	Score* score = new Score();
+	
+	gameMediator->AssignScore(score);
 
 #pragma endregion
 

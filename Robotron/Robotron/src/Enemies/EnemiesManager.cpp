@@ -18,8 +18,8 @@ public:
 	static const int gruntCountMin = 8;
 	static const int gruntCountMax = 15;
 
-	static constexpr float spawnXRange = 13.5f;
-	static constexpr float spawnYRange = 7.0f;
+	static constexpr float spawnXRange = 12.5f;
+	static constexpr float spawnYRange = 5.5f;
 
 	PIMPL();
 
@@ -40,22 +40,26 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 	int spheroidCount = GetRandomIntNumber(spheroidCountMin, spheroidCountMax);
 	int gruntCount = GetRandomIntNumber(gruntCountMin, gruntCountMax);
 
+	/*int spheroidCount = 1;
+	int gruntCount = 1;*/
+
 	float randomPosX = 0;
 	float randomPosY = 0;
 
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < spheroidCount; i++)
 	{
 		BaseEnemy* spheroid = factory->CreateSpheroid();
 		spheroid->enemiesManager = enemiesManager;
 
 		randomPosX = GetRandomFloatNumber(-spawnXRange, spawnXRange);
 		randomPosY = GetRandomFloatNumber(-spawnYRange, spawnYRange);
+
 		spheroid->model->transform.SetPosition(glm::vec3(randomPosX, randomPosY, 0.0f));
 
 		listOfEnemies.push_back(spheroid);
 	}
 
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < gruntCount; i++)
 	{
 		BaseEnemy* grunt = factory->CreateGrunt();
 		grunt->enemiesManager = enemiesManager;
@@ -72,6 +76,7 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 
 void EnemiesManager::PIMPL::RemoveEnemy(BaseEnemy* baseEnemy)
 {
+	gameMediator->AddScore(baseEnemy->score);
 	listOfEnemies.erase(std::remove(listOfEnemies.begin(), listOfEnemies.end(), baseEnemy), listOfEnemies.end());
 	gameMediator->RemoveEnemy(baseEnemy);
 }

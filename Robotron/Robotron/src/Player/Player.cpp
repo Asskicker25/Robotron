@@ -212,7 +212,7 @@ void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 	model->LoadModel("Assets/Models/Player/player4.ply");
 	model->transform.SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 	model->transform.SetRotation(glm::vec3(0.0f, 0.0f, 0.0f));
-	model->transform.SetScale(glm::vec3(0.01f));
+	model->transform.SetScale(glm::vec3(0.005f));
 	model->isActive = false;
 
 	renderer->AddModel(model, shader);
@@ -229,7 +229,7 @@ void Player::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, Physics
 
 	AssignRendererAndShader(renderer, shader);
 	SetTransformHolder(model);
-	SetModelScale(0.01f);
+	SetModelScale(0.0075f);
 	SetAnimationInterval(0.1f);
 
 	//Left

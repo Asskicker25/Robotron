@@ -10,6 +10,11 @@ void GameMediator::RemoveEnemy(BaseEnemy* enemy)
 	listOfEnemies.erase(std::remove(listOfEnemies.begin(), listOfEnemies.end(), enemy), listOfEnemies.end());
 }
 
+void GameMediator::AssignScore(Score* score)
+{
+	this->score = score;
+}
+
 void GameMediator::UpdatePlayerPosition(float posX, float posY)
 {
 	for (BaseEnemy* enemy : listOfEnemies)
@@ -24,4 +29,9 @@ void GameMediator::OnPlayerDead()
 	{
 		enemy->OnPlayerDead();
 	}
+}
+
+void GameMediator::AddScore(int score)
+{
+	this->score->AddScore(score);
 }

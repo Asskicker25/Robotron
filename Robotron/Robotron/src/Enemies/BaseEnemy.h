@@ -15,6 +15,7 @@ public:
 	EnemiesManager* enemiesManager;
 
 	float speed = 3.0f;
+	float score = 0;
 
 	BaseEnemy();
 	virtual ~BaseEnemy() {};

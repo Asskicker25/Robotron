@@ -4,6 +4,8 @@
 Grunt::Grunt()
 {
 	InitializeEntity(this);
+
+	score = 50;
 }
 
 void Grunt::Start()
@@ -18,13 +20,13 @@ void Grunt::Update(float deltaTime)
 void Grunt::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
 	model->LoadModel("Assets/Models/Enemies/Grunt/grunt1.ply");
-	model->transform.SetScale(glm::vec3(0.01f));
+	model->transform.SetScale(glm::vec3(0.0075f));
 	model->isActive = false;
 	phyObj->Initialize(model, AABB, DYNAMIC, TRIGGER);
 
 	AssignRendererAndShader(renderer, shader);
 	SetTransformHolder(model);
-	SetModelScale(0.01f);
+	SetModelScale(0.0075f);
 	SetAnimationInterval(0.1f);
 
 	AddModelToAnimationList(0, "Assets/Models/Enemies/Grunt/grunt1.ply");

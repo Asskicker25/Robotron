@@ -52,3 +52,10 @@ void HumansManager::SpawnHumans()
 		listOfHumans.push_back(human);
 	}
 }
+
+void HumansManager::RemoveHuman( Human* human)
+{
+	listOfHumans.erase(std::remove(listOfHumans.begin(), listOfHumans.end(), human), listOfHumans.end());
+
+	human->Destroy();
+}

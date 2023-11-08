@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AI\Enemies\Brain\Brain.cpp" />
     <ClCompile Include="src\Bullet\EnforcerBullet.cpp" />
     <ClCompile Include="src\AI\Enemies\Enforcer\Enforcer.cpp" />
     <ClCompile Include="src\AI\Enemies\Hulk\Hulk.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AI\Enemies\Brain\Brain.h" />
     <ClInclude Include="src\Bullet\EnforcerBullet.h" />
     <ClInclude Include="src\AI\Enemies\Enforcer\Enforcer.h" />
     <ClInclude Include="src\AI\Enemies\Hulk\Hulk.h" />

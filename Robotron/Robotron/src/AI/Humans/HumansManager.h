@@ -7,7 +7,10 @@ class HumansManager : public Entity
 {
 
 public:
+	std::vector<Human*> listOfHumans;
 	HumansManager();
+	void RemoveHuman(Human* human);
+
 
 private:
 
@@ -21,7 +24,6 @@ private:
 
 	int humanCount = 0;
 
-	std::vector<Human*> listOfHumans;
 
 	// Inherited via Entity
 	void Start() override;

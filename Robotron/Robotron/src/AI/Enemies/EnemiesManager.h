@@ -3,6 +3,8 @@
 #include "../../EntityManager/Entity.h"
 #include "../../Level/GameMediator.h"
 
+class HumansManager;
+
 class EnemiesManager : public Entity
 {
 
@@ -10,6 +12,7 @@ private:
 	class PIMPL;
 
 	PIMPL* pimpl;
+
 
 	// Inherited via Entity
 	void Start() override;
@@ -19,12 +22,17 @@ private:
 
 public:
 
+
 	EnemiesManager(GameMediator* gameMediator);
+
+	void SpawnEnemies();
 	
 	void AssignGameMediator(GameMediator* gameMediator);
 	void RemoveEnemy(BaseEnemy* enemy);
 
 	void SpawnEnemyForSpheroid(glm::vec3 position);
+
+	HumansManager* humansManager;
 
 };
 

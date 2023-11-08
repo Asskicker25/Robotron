@@ -24,6 +24,8 @@ public :
 	 
 	BaseEnemy* CreateEnforcer();
 
+	BaseEnemy* CreateBrain();
+
 	BaseEnemy* CreateEnemyByType(const int& type = 0);
 
 };

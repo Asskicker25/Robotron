@@ -5,6 +5,7 @@
 #include "Hulk/Hulk.h"
 #include "Enforcer/Enforcer.h"
 #include "../../EntityManager/EntityManager.h"
+#include "Brain/Brain.h"
 
 void EnemiesFactory::AddComponents(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
@@ -71,6 +72,20 @@ BaseEnemy* EnemiesFactory::CreateEnforcer()
 	return enforcer;
 }
 
+BaseEnemy* EnemiesFactory::CreateBrain()
+{
+	BaseEnemy* brain = new Brain();
+
+	renderer->AddModel(brain->model, shader);
+	physicsEngine->AddPhysicsObject(brain->phyObj);
+
+	EntityManager::GetInstance().AddEntity("Brain" + std::to_string(currentCount), brain);
+
+	currentCount++;
+
+	return brain;
+}
+
 
 BaseEnemy* EnemiesFactory::CreateEnemyByType(const int& type)
 {
@@ -85,6 +100,10 @@ BaseEnemy* EnemiesFactory::CreateEnemyByType(const int& type)
 	else if (type == 2)
 	{
 		return CreateHulk();
+	}
+	else if (type == 3)
+	{
+		return CreateBrain();
 	}
 
 	return CreateGrunt();

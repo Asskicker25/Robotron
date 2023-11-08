@@ -1,6 +1,8 @@
 #include "EnemiesManager.h"
 #include "EnemiesFactory.h"
 #include "../../Utilities/Random.h"
+#include "Brain/Brain.h"
+#include "../Humans/HumansManager.h"
 
 class EnemiesManager::PIMPL
 {
@@ -20,6 +22,9 @@ public:
 
 	static const int hulkCountMin = 3;
 	static const int hulkCountMax = 6;
+
+	static const int brainCountMin = 3;
+	static const int brainCountMax = 6;
 
 	static constexpr float spawnXRange = 12.5f;
 	static constexpr float spawnYRange = 5.5f;
@@ -51,9 +56,12 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 
 	int hulkCount = GetRandomIntNumber(hulkCountMin, hulkCountMax);
 
-	SpawnEnemiesByType(0, gruntCount);
-	SpawnEnemiesByType(1, spheroidCount);
-	SpawnEnemiesByType(2, hulkCount);
+	int brainCount = GetRandomIntNumber(brainCountMin, brainCountMax);
+
+	//SpawnEnemiesByType(0, gruntCount);
+	//SpawnEnemiesByType(1, spheroidCount);
+	//SpawnEnemiesByType(2, hulkCount);
+	SpawnEnemiesByType(3, brainCount);
 }
 
 void EnemiesManager::PIMPL::SpawnEnemiesByType(const int& id, const int& count)
@@ -78,6 +86,14 @@ void EnemiesManager::PIMPL::SpawnEnemiesByType(const int& id, const int& count)
 		if (id == 0)
 		{
 			gameMediator->AddEnemy(enemy);
+		}
+
+
+		if (id == 3)
+		{
+			std::cout << "Brain" << std::endl;
+
+			((Brain*)enemy)->SetHumanManager(enemiesManager->humansManager);
 		}
 	}
 }
@@ -110,6 +126,10 @@ EnemiesManager::EnemiesManager(GameMediator* gameMediator) : pimpl{new PIMPL()}
 	AssignGameMediator(gameMediator);
 
 	pimpl->enemiesManager = this;
+}
+
+void EnemiesManager::SpawnEnemies()
+{
 	pimpl->SpawnEnemies();
 }
 

@@ -73,3 +73,4 @@ void BaseAI::ChangeRandomDirection(bool reflectedRandom)
 	timeStep = 0;
 	phyObj->velocity = glm::vec3(GetRandomDirection(), 0.0f) * speed;
 }
+

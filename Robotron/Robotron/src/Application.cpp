@@ -4,7 +4,7 @@ int main(int argc, char* argv[])
 {
 	Robotron game;
 
-	Debugger::print = true;
+	Debugger::print = false;
 
 	game.InitializeWindow(1366, 768);
 

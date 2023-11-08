@@ -80,6 +80,9 @@ void Robotron::SetUp()
 
 	HumansManager* humansManager = new HumansManager();
 
+	enemiesManager->humansManager = humansManager;
+	enemiesManager->SpawnEnemies();
+
 #pragma endregion
 
 #pragma region EntityManager

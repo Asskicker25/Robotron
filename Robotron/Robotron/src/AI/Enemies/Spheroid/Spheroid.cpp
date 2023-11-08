@@ -1,5 +1,6 @@
 #include "Spheroid.h"
 #include "../EnemiesManager.h"
+#include "../../../Utilities/Random.h"
 
 Spheroid::Spheroid() 
 {
@@ -10,6 +11,8 @@ Spheroid::Spheroid()
 	isMovingRandom = true;
 
 	speed = 10.0f;
+
+	timeInterval = GetRandomFloatNumber(spawnTimeMin, spawnTimeMax);
 }
 
 void Spheroid::Start()
@@ -18,6 +21,7 @@ void Spheroid::Start()
 
 void Spheroid::UpdateAI(float deltaTime)
 {
+	CalculateSpawning(deltaTime);
 	UpdateAnimation(deltaTime);
 }
 
@@ -73,6 +77,27 @@ void Spheroid::OnCollision(PhysicsObject* otherObject)
 	{
 		ChangeRandomDirection();
 	}
+}
+
+void Spheroid::CalculateSpawning(float deltaTime)
+{
+	timeStep += deltaTime;
+
+	if (timeStep > timeInterval)
+	{
+		timeStep = 0;
+		timeInterval = GetRandomFloatNumber(spawnTimeMin, spawnTimeMax);
+
+		enemiesManager->SpawnEnemyForSpheroid(model->transform.position);
+
+		currentSpawnCount++;
+
+		if (currentSpawnCount >= spawnCount)
+		{
+			Destroy();
+		}
+	}
+
 }
 
 void Spheroid::MoveTowardsPlayerPosition(float xPos, float yPos)

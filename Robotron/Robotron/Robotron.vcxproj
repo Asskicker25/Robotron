@@ -137,6 +137,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AI\Enemies\Enforcer\Enforcer.cpp" />
+    <ClCompile Include="src\AI\Enemies\Hulk\Hulk.cpp" />
     <ClCompile Include="src\AI\Humans\HumansManager.cpp" />
     <ClCompile Include="src\AI\Humans\Human.cpp" />
     <ClCompile Include="src\AI\BaseAI.cpp" />
@@ -164,6 +166,8 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AI\Enemies\Enforcer\Enforcer.h" />
+    <ClInclude Include="src\AI\Enemies\Hulk\Hulk.h" />
     <ClInclude Include="src\AI\Humans\HumansManager.h" />
     <ClInclude Include="src\AI\Humans\Human.h" />
     <ClInclude Include="src\AI\BaseAI.h" />

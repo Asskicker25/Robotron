@@ -127,7 +127,7 @@ void Player::Pimpl::OnCollision(PhysicsObject* otherObject)
 	Entity* other = (Entity*)otherObject->userData;
 	std::string tag = other->tag;
 
-	if (tag == "Enemy")
+	if (tag == "Enemy" || tag == "Hulk")
 	{
 		player->Destroy();
 		player->gameMediator->OnPlayerDead();

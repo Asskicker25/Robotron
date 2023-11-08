@@ -24,5 +24,7 @@ public:
 	void AssignGameMediator(GameMediator* gameMediator);
 	void RemoveEnemy(BaseEnemy* enemy);
 
+	void SpawnEnemyForSpheroid(glm::vec3 position);
+
 };
 

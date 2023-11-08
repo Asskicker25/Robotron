@@ -19,5 +19,12 @@ public :
 	BaseEnemy* CreateSpheroid();
 
 	BaseEnemy* CreateGrunt();
+
+	BaseEnemy* CreateHulk();
+	 
+	BaseEnemy* CreateEnforcer();
+
+	BaseEnemy* CreateEnemyByType(const int& type = 0);
+
 };
 

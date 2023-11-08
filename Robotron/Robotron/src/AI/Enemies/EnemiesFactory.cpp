@@ -2,6 +2,8 @@
 
 #include "Spheroid/Spheroid.h"
 #include "Grunts/Grunt.h"
+#include "Hulk/Hulk.h"
+#include "Enforcer/Enforcer.h"
 #include "../../EntityManager/EntityManager.h"
 
 void EnemiesFactory::AddComponents(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
@@ -40,3 +42,52 @@ BaseEnemy* EnemiesFactory::CreateGrunt()
 
 	return grunt;
 }
+
+BaseEnemy* EnemiesFactory::CreateHulk()
+{
+	BaseEnemy* hulk = new Hulk();
+
+	renderer->AddModel(hulk->model, shader);
+	physicsEngine->AddPhysicsObject(hulk->phyObj);
+
+	EntityManager::GetInstance().AddEntity("Hulk" + std::to_string(currentCount), hulk);
+
+	currentCount++;
+
+	return hulk;
+}
+
+BaseEnemy* EnemiesFactory::CreateEnforcer()
+{
+	BaseEnemy* enforcer = new Enforcer();
+
+	renderer->AddModel(enforcer->model, shader);
+	physicsEngine->AddPhysicsObject(enforcer->phyObj);
+
+	EntityManager::GetInstance().AddEntity("Enforcer" + std::to_string(currentCount), enforcer);
+
+	currentCount++;
+
+	return enforcer;
+}
+
+
+BaseEnemy* EnemiesFactory::CreateEnemyByType(const int& type)
+{
+	if (type == 0)
+	{
+		return CreateGrunt();
+	}
+	else if (type == 1)
+	{
+		return CreateSpheroid();
+	}
+	else if (type == 2)
+	{
+		return CreateHulk();
+	}
+
+	return CreateGrunt();
+}
+
+

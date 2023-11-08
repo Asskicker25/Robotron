@@ -38,6 +38,11 @@ void Bullet::CreateBulletInstance(Model* bullet)
 				Destroy();
 			}
 
+			if (tag == "Hulk")
+			{
+				Destroy();
+			}
+
 			if (tag == "Border")
 			{
 				Destroy();

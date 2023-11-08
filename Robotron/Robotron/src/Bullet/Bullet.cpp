@@ -2,9 +2,6 @@
 
 Bullet::Bullet () 
 {
-	model = new Model();
-	phyObj = new PhysicsObject();
-
 	phyObj->userData = this;
 
 	bulletSpeed = 30.0f;
@@ -32,7 +29,7 @@ void Bullet::CreateBulletInstance(Model* bullet)
 			Entity* other = (Entity*)otherObject->userData;
 			std::string tag = other->tag;
 
-			if (tag == "Enemy")
+			if (tag == "Enemy" || tag == "EnforcerBullet")
 			{
 				other->Destroy();
 				Destroy();

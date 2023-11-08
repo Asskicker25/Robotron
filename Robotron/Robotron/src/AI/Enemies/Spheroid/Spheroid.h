@@ -11,7 +11,7 @@ private:
 	static constexpr float spawnTimeMin = 2.0f;
 	static constexpr float spawnTimeMax = 5.0f;
 
-	static  const int spawnCount = 5;
+	static  const int spawnCount = 1;
 
 	int currentSpawnCount = 0;
 

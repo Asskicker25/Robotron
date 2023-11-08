@@ -12,8 +12,8 @@ public:
 
 	std::vector<BaseEnemy*> listOfEnemies;
 
-	static const int spheroidCountMin = 3;
-	static const int spheroidCountMax = 5;
+	static const int spheroidCountMin = 2;
+	static const int spheroidCountMax = 4;
 
 	static const int gruntCountMin = 8;
 	static const int gruntCountMax = 15;
@@ -31,6 +31,8 @@ public:
 	void SpawnEnemies();
 	void SpawnEnemiesByType(const int& id, const int& count);
 	void RemoveEnemy(BaseEnemy* baseEnemy);
+
+	void SpawnEnemyForSpheroid(const glm::vec3& position);
 
 };
 
@@ -87,6 +89,19 @@ void EnemiesManager::PIMPL::RemoveEnemy(BaseEnemy* baseEnemy)
 	gameMediator->RemoveEnemy(baseEnemy);
 }
 
+void EnemiesManager::PIMPL::SpawnEnemyForSpheroid(const glm::vec3& position)
+{
+	BaseEnemy* enemy = factory->CreateEnforcer();
+
+	enemy->enemiesManager = enemiesManager;
+
+	enemy->model->transform.SetPosition(position);
+
+	listOfEnemies.push_back(enemy);
+
+	gameMediator->AddEnemy(enemy);
+}
+
 
 EnemiesManager::EnemiesManager(GameMediator* gameMediator) : pimpl{new PIMPL()}
 {
@@ -110,11 +125,7 @@ void EnemiesManager::RemoveEnemy(BaseEnemy* enemy)
 
 void EnemiesManager::SpawnEnemyForSpheroid(glm::vec3 position)
 {
-	BaseEnemy* enemy = pimpl->factory->CreateEnforcer();
-
-	enemy->model->transform.SetPosition(position);
-
-	pimpl->listOfEnemies.push_back(enemy);
+	pimpl->SpawnEnemyForSpheroid(position);
 }
 
 void EnemiesManager::Start()

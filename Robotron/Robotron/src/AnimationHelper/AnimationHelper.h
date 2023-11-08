@@ -33,6 +33,7 @@ public:
 	std::vector<std::vector<Model*>> animationModels;
 
 	void AddModelToAnimationList(const int& stateIndex, const std::string& modelPath);
+	void AddModelToAnimationList(const int& stateIndex, Model* model);
 	void SetAnimationInterval(const float& animationInterval = 0);
 	void UpdateAnimation(const float& deltaTime);
 

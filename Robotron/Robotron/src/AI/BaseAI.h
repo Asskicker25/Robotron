@@ -14,7 +14,7 @@ private:
 	float dirChangeIntervalMax = 5.0f;
 	float dirChangeInterval = 0.0f;
 
-	glm::vec2 GetRandomDirection();
+	glm::vec2 GetRandomDirection(bool reflectedRandom = false);
 	void UpdateRandomMoveDirection(float deltaTime);
 
 public:
@@ -41,6 +41,6 @@ public:
 	// Inherited via Entity
 	void Update(float deltaTime) override;
 
-	void ChangeRandomDirection();
+	void ChangeRandomDirection(bool reflectedRandom = true);
 };
 

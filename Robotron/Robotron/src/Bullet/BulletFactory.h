@@ -11,12 +11,18 @@ private:
 
 	Model* baseBulletPrefab = nullptr;
 
+	Model* enforcerBulletPrefab = nullptr;
+
+	std::vector<Model*> enforcerAnimationModels;
+
 	Renderer* renderer;
 	Shader* shader;
 	PhysicsEngine* physicsEngine;
 
 public:
 	BaseBullet* CreateBaseBullet();
+	BaseBullet* CreateEnforcerBullet();
+
 	void AssignRenderesAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine);
 };
 

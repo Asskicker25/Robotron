@@ -45,13 +45,13 @@
     <ClCompile Include="src\Player\PlayerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Player\Bullet\BulletFactory.cpp">
+    <ClCompile Include="src\Bullet\BulletFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Player\Bullet\Bullet.cpp">
+    <ClCompile Include="src\Bullet\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Player\Bullet\BaseBullet.cpp">
+    <ClCompile Include="src\Bullet\BaseBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\AI\Enemies\EnemiesFactory.cpp">
@@ -96,6 +96,9 @@
     <ClCompile Include="src\AI\Enemies\Enforcer\Enforcer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Bullet\EnforcerBullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Robotron.h">
@@ -131,13 +134,13 @@
     <ClInclude Include="src\Player\PlayerController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Player\Bullet\BulletFactory.h">
+    <ClInclude Include="src\Bullet\BulletFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Player\Bullet\BaseBullet.h">
+    <ClInclude Include="src\Bullet\BaseBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Player\Bullet\Bullet.h">
+    <ClInclude Include="src\Bullet\Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AI\Enemies\EnemiesFactory.h">
@@ -180,6 +183,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AI\Enemies\Enforcer\Enforcer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Bullet\EnforcerBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

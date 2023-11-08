@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../EntityManager/EntityManager.h"
-#include "../../Level/GameMediator.h"
+#include "../EntityManager/EntityManager.h"
+#include "../Level/GameMediator.h"
 
 class BaseBullet : public Entity
 {
@@ -12,6 +12,7 @@ public:
 
 	float bulletSpeed;
 
+	BaseBullet();
 	virtual ~BaseBullet() {};
 
 	// Inherited via Entity

@@ -10,6 +10,12 @@ void AnimationHelper::AddModelToAnimationList(const int& stateIndex, const std::
 	animationModels[stateIndex].push_back(LoadModel(modelPath));
 }
 
+void AnimationHelper::AddModelToAnimationList(const int& stateIndex, Model* model)
+{
+	renderer->AddModel(model, shader);
+	animationModels[stateIndex].push_back(model);
+}
+
 void AnimationHelper::SetAnimationInterval(const float& animationInterval)
 {
 	this->animationInterval = animationInterval;

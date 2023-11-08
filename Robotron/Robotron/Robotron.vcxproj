@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bullet\EnforcerBullet.cpp" />
     <ClCompile Include="src\AI\Enemies\Enforcer\Enforcer.cpp" />
     <ClCompile Include="src\AI\Enemies\Hulk\Hulk.cpp" />
     <ClCompile Include="src\AI\Humans\HumansManager.cpp" />
@@ -151,9 +152,9 @@
     <ClCompile Include="src\AI\Enemies\EnemiesManager.cpp" />
     <ClCompile Include="src\AI\Enemies\Spheroid\Spheroid.cpp" />
     <ClCompile Include="src\AI\Enemies\EnemiesFactory.cpp" />
-    <ClCompile Include="src\Player\Bullet\Bullet.cpp" />
-    <ClCompile Include="src\Player\Bullet\BulletFactory.cpp" />
-    <ClCompile Include="src\Player\Bullet\BaseBullet.cpp" />
+    <ClCompile Include="src\Bullet\Bullet.cpp" />
+    <ClCompile Include="src\Bullet\BulletFactory.cpp" />
+    <ClCompile Include="src\Bullet\BaseBullet.cpp" />
     <ClCompile Include="src\Player\PlayerController.cpp" />
     <ClCompile Include="src\InputManager\InputManager.cpp" />
     <ClCompile Include="src\Player\Builder\PlayerBuilder.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Bullet\EnforcerBullet.h" />
     <ClInclude Include="src\AI\Enemies\Enforcer\Enforcer.h" />
     <ClInclude Include="src\AI\Enemies\Hulk\Hulk.h" />
     <ClInclude Include="src\AI\Humans\HumansManager.h" />
@@ -180,9 +182,9 @@
     <ClInclude Include="src\AI\Enemies\EnemiesManager.h" />
     <ClInclude Include="src\AI\Enemies\Spheroid\Spheroid.h" />
     <ClInclude Include="src\AI\Enemies\EnemiesFactory.h" />
-    <ClInclude Include="src\Player\Bullet\Bullet.h" />
-    <ClInclude Include="src\Player\Bullet\BulletFactory.h" />
-    <ClInclude Include="src\Player\Bullet\BaseBullet.h" />
+    <ClInclude Include="src\Bullet\Bullet.h" />
+    <ClInclude Include="src\Bullet\BulletFactory.h" />
+    <ClInclude Include="src\Bullet\BaseBullet.h" />
     <ClInclude Include="src\Player\PlayerController.h" />
     <ClInclude Include="src\InputManager\iInputListener.h" />
     <ClInclude Include="src\InputManager\InputManager.h" />

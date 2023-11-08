@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <Graphics/Debugger.h>
 #include "../InputManager/InputManager.h"
-#include "Bullet/BulletFactory.h"
+#include "../Bullet/BulletFactory.h"
 
 enum Player::PlayerAnimationState
 {
@@ -22,7 +22,7 @@ class Player::Pimpl
 	Player* player;
 
 	float timeStep = 2.0;
-	float posUpdateInterval = 2.0f;
+	float posUpdateInterval = 0.5f;
 
 public:
 
@@ -132,6 +132,14 @@ void Player::Pimpl::OnCollision(PhysicsObject* otherObject)
 		player->Destroy();
 		player->gameMediator->OnPlayerDead();
 	}
+
+	if (tag == "EnforcerBullet")
+	{
+		other->Destroy();
+		player->Destroy();
+		player->gameMediator->OnPlayerDead();
+	}
+
 
 	if (tag == "Human")
 	{

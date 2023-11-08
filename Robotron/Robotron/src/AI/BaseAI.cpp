@@ -3,13 +3,13 @@
 
 const glm::vec2 directions[] = {
 		glm::vec2(0, 1),    // UP
-		glm::vec2(0, -1),   // DOWN
-		glm::vec2(-1, 0),   // LEFT
-		glm::vec2(1, 0),    // RIGHT
-		glm::vec2(-1, 1),   // UPLEFT
 		glm::vec2(1, 1),    // UPRIGHT
+		glm::vec2(1, 0),    // RIGHT
+		glm::vec2(1, -1),    // DOWNRIGHT
+		glm::vec2(0, -1),   // DOWN
 		glm::vec2(-1, -1),  // DOWNLEFT
-		glm::vec2(1, -1)    // DOWNRIGHT
+		glm::vec2(-1, 0),   // LEFT
+		glm::vec2(-1, 1),   // UPLEFT
 };
 
 BaseAI::BaseAI()
@@ -24,15 +24,25 @@ BaseAI::BaseAI()
 }
 
 
-glm::vec2 BaseAI::GetRandomDirection()
+glm::vec2 BaseAI::GetRandomDirection(bool reflectedRandom)
 {
 	int randomDirIndex = -1;
 
-	do
+	if (reflectedRandom)
 	{
-		randomDirIndex = GetRandomIntNumber(0, 7);
+		do
+		{
+			randomDirIndex = GetRandomIntNumber(0, 7);
+		} while (randomDirIndex == currentDirection || randomDirIndex == currentDirection - 1 || randomDirIndex == currentDirection + 1);
+	}
+	else
+	{
+		do
+		{
+			randomDirIndex = GetRandomIntNumber(0, 7);
+		} while (randomDirIndex == currentDirection);
+	}
 
-	} while (randomDirIndex == currentDirection);
 
 	currentDirection = randomDirIndex;
 
@@ -47,7 +57,7 @@ void BaseAI::UpdateRandomMoveDirection(float deltaTime)
 
 	if (timeStep > dirChangeInterval)
 	{
-		ChangeRandomDirection();
+		ChangeRandomDirection(false);
 	}
 }
 
@@ -57,7 +67,7 @@ void BaseAI::Update(float deltaTime)
 	UpdateRandomMoveDirection(deltaTime);
 }
 
-void BaseAI::ChangeRandomDirection()
+void BaseAI::ChangeRandomDirection(bool reflectedRandom)
 {
 	dirChangeInterval = GetRandomFloatNumber(dirChangeIntervalMin, dirChangeIntervalMax);
 	timeStep = 0;

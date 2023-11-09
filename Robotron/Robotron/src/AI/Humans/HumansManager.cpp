@@ -48,6 +48,7 @@ void HumansManager::SpawnHumans()
 		} while (std::abs(randomX) < centerRadius && std::abs(randomY) < centerRadius);
 
 		human->model->transform.SetPosition(glm::vec3(randomX, randomY, 0.0f));
+		human->humansManager = this;
 
 		listOfHumans.push_back(human);
 	}

@@ -38,7 +38,7 @@ public:
 	void RemoveEnemy(BaseEnemy* baseEnemy);
 
 	void SpawnEnemyForSpheroid(const glm::vec3& position);
-
+	void AddBulletToMediator(BaseBullet* bullet);
 };
 
 
@@ -58,9 +58,9 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 
 	int brainCount = GetRandomIntNumber(brainCountMin, brainCountMax);
 
-	//SpawnEnemiesByType(0, gruntCount);
-	//SpawnEnemiesByType(1, spheroidCount);
-	//SpawnEnemiesByType(2, hulkCount);
+	SpawnEnemiesByType(0, gruntCount);
+	SpawnEnemiesByType(1, spheroidCount);
+	SpawnEnemiesByType(2, hulkCount);
 	SpawnEnemiesByType(3, brainCount);
 }
 
@@ -83,7 +83,7 @@ void EnemiesManager::PIMPL::SpawnEnemiesByType(const int& id, const int& count)
 
 		listOfEnemies.push_back(enemy);
 
-		if (id == 0)
+		if (id == 0 || id == 3)
 		{
 			gameMediator->AddEnemy(enemy);
 		}
@@ -118,6 +118,11 @@ void EnemiesManager::PIMPL::SpawnEnemyForSpheroid(const glm::vec3& position)
 	gameMediator->AddEnemy(enemy);
 }
 
+void EnemiesManager::PIMPL::AddBulletToMediator(BaseBullet* bullet)
+{
+	gameMediator->AddBullet(bullet);
+}
+
 
 EnemiesManager::EnemiesManager(GameMediator* gameMediator) : pimpl{new PIMPL()}
 {
@@ -146,6 +151,11 @@ void EnemiesManager::RemoveEnemy(BaseEnemy* enemy)
 void EnemiesManager::SpawnEnemyForSpheroid(glm::vec3 position)
 {
 	pimpl->SpawnEnemyForSpheroid(position);
+}
+
+void EnemiesManager::AddBulletToMediator(BaseBullet* bullet)
+{
+	pimpl->AddBulletToMediator(bullet);
 }
 
 void EnemiesManager::Start()

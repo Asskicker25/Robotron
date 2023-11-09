@@ -100,3 +100,7 @@ void EnforcerBullet::CreateBulletInstance(Model* transform, const std::vector<Mo
 		});*/
 }
 
+void EnforcerBullet::UpdatePlayerPos(float xPos, float yPos)
+{
+}
+

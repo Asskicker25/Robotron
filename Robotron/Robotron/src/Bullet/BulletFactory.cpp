@@ -2,6 +2,7 @@
 
 #include "Bullet.h"
 #include "EnforcerBullet.h"
+#include "TrackingMissile.h"
 
 BaseBullet* BulletFactory::CreateBaseBullet()
 {
@@ -42,6 +43,29 @@ BaseBullet* BulletFactory::CreateEnforcerBullet()
 	physicsEngine->AddPhysicsObject(bullet->phyObj);
 
 	EntityManager::GetInstance().AddEntity("EnforcerBullet" + std::to_string(bulletCount), bullet);
+
+	bulletCount++;
+
+	return bullet;
+}
+
+BaseBullet* BulletFactory::CreateTrackingMissile()
+{
+	if (trackingMissilePrefab == nullptr)
+	{
+		trackingMissilePrefab = new Model("Assets/Models/DefaultCube.fbx");
+		trackingMissilePrefab->transform.SetScale(glm::vec3(0.3f));
+		trackingMissilePrefab->meshes[0]->material->SetBaseColor(glm::vec3(0.0f, 0.0f, 1.0f));
+	}
+
+	TrackingMissile* bullet = new TrackingMissile();
+
+	bullet->CreateBulletInstance(trackingMissilePrefab);
+
+	renderer->AddModel(bullet->model, shader);
+	physicsEngine->AddPhysicsObject(bullet->phyObj);
+
+	EntityManager::GetInstance().AddEntity("TrackingMissile" + std::to_string(bulletCount), bullet);
 
 	bulletCount++;
 

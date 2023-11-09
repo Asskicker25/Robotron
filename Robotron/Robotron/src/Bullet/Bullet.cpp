@@ -29,7 +29,7 @@ void Bullet::CreateBulletInstance(Model* bullet)
 			Entity* other = (Entity*)otherObject->userData;
 			std::string tag = other->tag;
 
-			if (tag == "Enemy" || tag == "EnforcerBullet")
+			if (tag == "Enemy" || tag == "EnforcerBullet" || tag == "TrackingMissile")
 			{
 				other->Destroy();
 				Destroy();
@@ -56,6 +56,10 @@ void Bullet::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* phy
 {
 	renderer->RemoveModel(model);
 	physicsEngine->RemovePhysicsObject(phyObj);
+}
+
+void Bullet::UpdatePlayerPos(float xPos, float yPos)
+{
 }
 
 void Bullet::Start()

@@ -2,6 +2,7 @@
 
 #include "../../EntityManager/Entity.h"
 #include "../../Level/GameMediator.h"
+#include "../../Bullet/BaseBullet.h"
 
 class HumansManager;
 
@@ -31,6 +32,9 @@ public:
 	void RemoveEnemy(BaseEnemy* enemy);
 
 	void SpawnEnemyForSpheroid(glm::vec3 position);
+
+	void AddBulletToMediator(BaseBullet* bullet);
+
 
 	HumansManager* humansManager;
 

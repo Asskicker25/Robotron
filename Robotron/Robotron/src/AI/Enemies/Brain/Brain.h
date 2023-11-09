@@ -1,8 +1,11 @@
 #pragma once
 #include "../BaseEnemy.h"
 #include "../../Humans/HumansManager.h"
+#include "../../../Bullet/BulletFactory.h"
 
-class Brain : public BaseEnemy
+class TrackingMissile;
+
+class Brain  : public BaseEnemy
 {
 
 public:
@@ -32,6 +35,8 @@ public:
 
 	void SetHumanManager(HumansManager* humanManager);
 
+	void RemoveFromRenderer();
+
 
 private:
 	// Inherited via BaseEnemy
@@ -51,7 +56,13 @@ private:
 
 	float DistanceFromHuman(Human* human);
 
+	void ShootBullet(glm::vec3 dir);
+
+
 	static constexpr float minReachDist = 0.1f;
+
+
+	BulletFactory* bulletFactory;
 
 	HumansManager* humanManager = nullptr;
 
@@ -59,6 +70,15 @@ private:
 
 	float timeStep = 2;
 	float chaseUpdateInterval = 2;
+	float shootingInterval = 4;
+
+	bool isPlayerDead = false;
+
+	glm::vec3 playerPos;
+
+
+	Renderer* render;
+	PhysicsEngine* physicsEngine;
 
 };
 

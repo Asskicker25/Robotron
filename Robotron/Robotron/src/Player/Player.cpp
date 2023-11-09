@@ -2,6 +2,7 @@
 #include <Graphics/Debugger.h>
 #include "../InputManager/InputManager.h"
 #include "../Bullet/BulletFactory.h"
+#include "../AI/Humans/Human.h"
 
 enum Player::PlayerAnimationState
 {
@@ -127,24 +128,26 @@ void Player::Pimpl::OnCollision(PhysicsObject* otherObject)
 	Entity* other = (Entity*)otherObject->userData;
 	std::string tag = other->tag;
 
+
+
 	if (tag == "Enemy" || tag == "Hulk")
 	{
 		player->Destroy();
 		player->gameMediator->OnPlayerDead();
 	}
 
-	if (tag == "EnforcerBullet")
+	if (tag == "EnforcerBullet" || tag == "TrackingMissile")
 	{
 		other->Destroy();
 		player->Destroy();
 		player->gameMediator->OnPlayerDead();
 	}
 
-
 	if (tag == "Human")
 	{
-		other->Destroy();
 		player->gameMediator->AddScore(1000);
+		((Human*)other)->RemoveFromHumanManager();
+
 	}
 }
 

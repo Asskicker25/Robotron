@@ -166,6 +166,7 @@
     <ClCompile Include="src\EntityManager\EntityManager.cpp" />
     <ClCompile Include="src\Robotron.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Bullet\TrackingMissile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AI\Enemies\Brain\Brain.h" />
@@ -198,6 +199,7 @@
     <ClInclude Include="src\EntityManager\Entity.h" />
     <ClInclude Include="src\EntityManager\EntityManager.h" />
     <ClInclude Include="src\Robotron.h" />
+    <ClInclude Include="src\Bullet\TrackingMissile.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Models\Player\player1.ply" />

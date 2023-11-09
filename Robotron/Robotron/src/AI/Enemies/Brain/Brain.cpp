@@ -1,4 +1,6 @@
 #include "Brain.h"
+#include "../../../Bullet/TrackingMissile.h"
+#include "../../Enemies/EnemiesManager.h"
 
 Brain::Brain()
 {
@@ -18,6 +20,12 @@ void Brain::UpdateAI(float deltaTime)
 
 void Brain::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
+	this->render = renderer;
+	this->physicsEngine = physicsEngine;
+
+	bulletFactory = new BulletFactory();
+	bulletFactory->AssignRenderesAndPhysics(renderer, shader, physicsEngine);
+
 	model->LoadModel("Assets/Models/Enemies/Brain/brain2.ply");
 	model->transform.SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 	model->transform.SetScale(glm::vec3(0.0075f));
@@ -79,15 +87,42 @@ void Brain::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* phys
 
 void Brain::MoveTowardsPlayerPosition(float xPos, float yPos)
 {
+	playerPos = glm::vec3(xPos, yPos, 0.0f);
 }
 
 void Brain::OnPlayerDead()
 {
+	isPlayerDead = true;
+
+	if (brainState == CHASEPLAYER)
+	{
+		isMovingRandom = true;
+	}
 }
 
 void Brain::SwitchState(BrainState state)
 {
 	this->brainState = state;
+
+	switch (state)
+	{
+	case NONE:
+		break;
+
+	case CHASEHUMAN:
+		break;
+
+	case CHASEPLAYER:
+
+		timeStep = 0;
+		
+		if (isPlayerDead)
+		{
+			isMovingRandom = true;
+		}
+
+		break;
+	}
 }
 
 void Brain::HandleUpdate(float deltaTime)
@@ -107,8 +142,8 @@ void Brain::HandleUpdate(float deltaTime)
 			timeStep = 0;
 			ChaseHumanUpdate(deltaTime);
 		}
-
 		break;
+
 	case CHASEPLAYER:
 		ChasePlayerUpdate(deltaTime);
 		break;
@@ -137,7 +172,6 @@ void Brain::ChaseHumanUpdate(float deltaTime)
 		}
 	}
 
-
 	chasingHuman = humanManager->listOfHumans[index];
 }
 
@@ -161,6 +195,28 @@ void Brain::ChaseHumanMoveUpdate(float deltaTime)
 
 void Brain::ChasePlayerUpdate(float deltaTime)
 {
+	if (isPlayerDead) return;
+
+	timeStep += deltaTime;
+
+	glm::vec3 diff = playerPos - model->transform.position;
+
+	glm::vec3 dir = glm::normalize(diff);
+
+	float sqDist = glm::dot(diff, diff);
+
+	phyObj->velocity = dir * speed;
+
+	if (sqDist < minReachDist * minReachDist)
+	{
+		phyObj->velocity = glm::vec3(0);
+	}
+
+	if (timeStep > shootingInterval)
+	{
+		timeStep = 0;
+		ShootBullet(dir);
+	}
 }
 
 float Brain::DistanceFromHuman(Human* human)
@@ -169,6 +225,25 @@ float Brain::DistanceFromHuman(Human* human)
 	return glm::dot(diff, diff);
 }
 
+void Brain::ShootBullet(glm::vec3 dir)
+{
+	TrackingMissile* bullet = (TrackingMissile*)bulletFactory->CreateTrackingMissile();
+
+	bullet->model->transform.SetPosition(model->transform.position);
+
+	enemiesManager->AddBulletToMediator(bullet);
+
+
+}
+
+
+void Brain::RemoveFromRenderer()
+{
+	DestroyAnimationModels();
+
+	render->RemoveModel(model);
+	physicsEngine->RemovePhysicsObject(phyObj);
+}
 
 
 void Brain::ChangeAnimationState(AnimationState animationState)

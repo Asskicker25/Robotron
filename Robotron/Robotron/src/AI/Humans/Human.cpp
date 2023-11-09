@@ -17,6 +17,11 @@ Human::Human(HumanType humanType)
 	tag = "Human";
 }
 
+void Human::RemoveFromHumanManager()
+{
+	humansManager->RemoveHuman(this);
+}
+
 void Human::Start()
 {
 }

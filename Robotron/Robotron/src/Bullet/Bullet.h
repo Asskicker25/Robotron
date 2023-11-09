@@ -22,5 +22,9 @@ public:
 
 	void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) override;
 
+
+	// Inherited via BaseBullet
+	void UpdatePlayerPos(float xPos, float yPos) override;
+
 };
 

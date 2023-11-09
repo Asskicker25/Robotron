@@ -29,10 +29,11 @@ public:
 
 	HumansManager* humansManager;
 
-	
 
 	float speedMin = 2.0f;
 	float speedMax = 5.0f;
+
+	void RemoveFromHumanManager();
 
 private:
 

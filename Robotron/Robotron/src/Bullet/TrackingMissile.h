@@ -2,13 +2,11 @@
 
 #include "BaseBullet.h"
 
-#include "../AnimationHelper/AnimationHelper.h"
+class Brain;
 
-class EnforcerBullet : public BaseBullet, public AnimationHelper
+class TrackingMissile : public BaseBullet
 {
-private :
-
-	float rotateSpeed = 150.0f;
+private:
 	// Inherited via BaseBullet
 	void Start() override;
 	void Update(float deltaTime) override;
@@ -16,16 +14,15 @@ private :
 	void AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine) override;
 	void RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* physicsEngine) override;
 
+
+	static constexpr float minReachDist = 0.1f;
+
 public:
-	EnforcerBullet();
+
+	TrackingMissile();
 	void CreateBulletInstance(Model* bullet) override;
-
-	void CreateBulletInstance(Model* transform, const std::vector<Model*>& animationModels,
-		Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine);
-
 
 	// Inherited via BaseBullet
 	void UpdatePlayerPos(float xPos, float yPos) override;
-
 };
 

@@ -1,5 +1,6 @@
 #include "GameMediator.h"
 #include "../Player/PlayerController.h"
+#include "../Bullet/BaseBullet.h"
 
 void GameMediator::AddEnemy(BaseEnemy* enemy)
 {
@@ -9,6 +10,17 @@ void GameMediator::AddEnemy(BaseEnemy* enemy)
 void GameMediator::RemoveEnemy(BaseEnemy* enemy)
 {
 	listOfEnemies.erase(std::remove(listOfEnemies.begin(), listOfEnemies.end(), enemy), listOfEnemies.end());
+}
+
+void GameMediator::AddBullet(BaseBullet* bullet)
+{
+	listOfBullets.push_back(bullet);
+}
+
+
+void GameMediator::RemoveBullet(BaseBullet* bullet)
+{
+	listOfBullets.erase(std::remove(listOfBullets.begin(), listOfBullets.end(), bullet), listOfBullets.end());
 }
 
 void GameMediator::AssignScore(Score* score)
@@ -27,6 +39,12 @@ void GameMediator::UpdatePlayerPosition(float posX, float posY)
 	{
 		enemy->MoveTowardsPlayerPosition(posX, posY);
 	}
+
+	for (BaseBullet* bullet : listOfBullets)
+	{
+		bullet->UpdatePlayerPos(posX, posY);
+	}
+
 }
 
 void GameMediator::OnPlayerDead()

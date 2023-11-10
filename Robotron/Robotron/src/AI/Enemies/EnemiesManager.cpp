@@ -88,11 +88,8 @@ void EnemiesManager::PIMPL::SpawnEnemiesByType(const int& id, const int& count)
 			gameMediator->AddEnemy(enemy);
 		}
 
-
 		if (id == 3)
 		{
-			std::cout << "Brain" << std::endl;
-
 			((Brain*)enemy)->SetHumanManager(enemiesManager->humansManager);
 		}
 	}

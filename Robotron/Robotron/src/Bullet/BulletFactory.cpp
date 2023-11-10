@@ -4,6 +4,13 @@
 #include "EnforcerBullet.h"
 #include "TrackingMissile.h"
 
+int BulletFactory::count = 0;
+
+BulletFactory::BulletFactory()
+{
+	index = ++count;
+}
+
 BaseBullet* BulletFactory::CreateBaseBullet()
 {
 	if (baseBulletPrefab == nullptr)
@@ -20,7 +27,7 @@ BaseBullet* BulletFactory::CreateBaseBullet()
 	renderer->AddModel(bullet->model, shader);
 	physicsEngine->AddPhysicsObject(bullet->phyObj);
 
-	EntityManager::GetInstance().AddEntity("Bullet" + std::to_string(bulletCount), bullet);
+	EntityManager::GetInstance().AddEntity("Factory" + std::to_string(index) + "Bullet" + std::to_string(bulletCount), bullet);
 
 	bulletCount++;
 
@@ -42,7 +49,7 @@ BaseBullet* BulletFactory::CreateEnforcerBullet()
 	renderer->AddModel(bullet->model, shader);
 	physicsEngine->AddPhysicsObject(bullet->phyObj);
 
-	EntityManager::GetInstance().AddEntity("EnforcerBullet" + std::to_string(bulletCount), bullet);
+	EntityManager::GetInstance().AddEntity("Factory" + std::to_string(index)+  "EnforcerBullet" + std::to_string(bulletCount), bullet);
 
 	bulletCount++;
 
@@ -65,7 +72,8 @@ BaseBullet* BulletFactory::CreateTrackingMissile()
 	renderer->AddModel(bullet->model, shader);
 	physicsEngine->AddPhysicsObject(bullet->phyObj);
 
-	EntityManager::GetInstance().AddEntity("TrackingMissile" + std::to_string(bulletCount), bullet);
+	EntityManager::GetInstance().AddEntity("Factory" + std::to_string(index) + "TrackingMissile" + std::to_string(bulletCount), bullet);
+
 
 	bulletCount++;
 

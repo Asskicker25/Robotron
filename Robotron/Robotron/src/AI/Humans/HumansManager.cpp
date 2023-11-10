@@ -11,7 +11,7 @@ HumansManager::HumansManager()
 
 void HumansManager::Start()
 {
-	SpawnHumans();
+	//SpawnHumans();
 }
 
 void HumansManager::Update(float deltaTime)

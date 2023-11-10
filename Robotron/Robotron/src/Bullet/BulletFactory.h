@@ -3,10 +3,15 @@
 #include <Graphics/Renderer.h>
 #include "BaseBullet.h"
 
+
 class BulletFactory 
 {
 
 private:
+
+	int index;
+
+	static int count;
 	int bulletCount = 0;
 
 	Model* baseBulletPrefab = nullptr;
@@ -22,6 +27,9 @@ private:
 	PhysicsEngine* physicsEngine;
 
 public:
+
+	BulletFactory();
+
 	BaseBullet* CreateBaseBullet();
 	BaseBullet* CreateEnforcerBullet();
 	BaseBullet* CreateTrackingMissile();

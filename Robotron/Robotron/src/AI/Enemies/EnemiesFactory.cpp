@@ -4,6 +4,7 @@
 #include "Grunts/Grunt.h"
 #include "Hulk/Hulk.h"
 #include "Enforcer/Enforcer.h"
+#include "Tank/Tank.h"
 #include "../../EntityManager/EntityManager.h"
 #include "Brain/Brain.h"
 
@@ -87,6 +88,22 @@ BaseEnemy* EnemiesFactory::CreateBrain()
 }
 
 
+
+BaseEnemy* EnemiesFactory::CreateTank()
+{
+	BaseEnemy* tank = new Tank();
+
+	renderer->AddModel(tank->model, shader);
+	physicsEngine->AddPhysicsObject(tank->phyObj);
+
+	EntityManager::GetInstance().AddEntity("Tank" + std::to_string(currentCount), tank);
+
+	currentCount++;
+
+	return tank;
+}
+
+
 BaseEnemy* EnemiesFactory::CreateEnemyByType(const int& type)
 {
 	if (type == 0)
@@ -104,6 +121,10 @@ BaseEnemy* EnemiesFactory::CreateEnemyByType(const int& type)
 	else if (type == 3)
 	{
 		return CreateBrain();
+	}
+	else if (type == 4)
+	{
+		return CreateTank();
 	}
 
 	return CreateGrunt();

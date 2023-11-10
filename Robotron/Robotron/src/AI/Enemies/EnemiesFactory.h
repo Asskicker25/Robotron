@@ -26,6 +26,8 @@ public :
 
 	BaseEnemy* CreateBrain();
 
+	BaseEnemy* CreateTank();
+
 	BaseEnemy* CreateEnemyByType(const int& type = 0);
 
 };

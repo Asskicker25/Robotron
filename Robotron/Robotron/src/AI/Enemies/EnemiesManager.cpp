@@ -26,6 +26,9 @@ public:
 	static const int brainCountMin = 3;
 	static const int brainCountMax = 6;
 
+	static const int tankCountMin = 3;
+	static const int tankCountMax = 6;
+
 	static constexpr float spawnXRange = 12.5f;
 	static constexpr float spawnYRange = 5.5f;
 
@@ -58,10 +61,13 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 
 	int brainCount = GetRandomIntNumber(brainCountMin, brainCountMax);
 
+	int tankCount = GetRandomIntNumber(tankCountMin, tankCountMax);
+
 	/*SpawnEnemiesByType(0, gruntCount);
 	SpawnEnemiesByType(1, spheroidCount);
-	SpawnEnemiesByType(2, hulkCount);*/
-	SpawnEnemiesByType(3, brainCount);
+	SpawnEnemiesByType(2, hulkCount);
+	SpawnEnemiesByType(3, brainCount);*/
+	SpawnEnemiesByType(4, tankCount);
 }
 
 void EnemiesManager::PIMPL::SpawnEnemiesByType(const int& id, const int& count)
@@ -83,7 +89,7 @@ void EnemiesManager::PIMPL::SpawnEnemiesByType(const int& id, const int& count)
 
 		listOfEnemies.push_back(enemy);
 
-		if (id == 0 || id == 3)
+		if (id == 0 || id == 3 || id == 4)
 		{
 			gameMediator->AddEnemy(enemy);
 		}

@@ -1,8 +1,9 @@
 #include "Human.h"
 #include "HumansManager.h"
 #include "../../Utilities/Random.h"
+#include "../../Level/GameMediator.h"
 
-const std::string humanName[] = 
+const std::string humanName[] =
 {
 	"daddy", "mommy", "mikey"
 };
@@ -20,6 +21,30 @@ Human::Human(HumanType humanType)
 void Human::RemoveFromHumanManager()
 {
 	humansManager->RemoveHuman(this);
+}
+
+void Human::ChangeToProg()
+{
+	tag = "Enemy";
+	speed = 12.0f;
+	score = 100;
+
+	for (std::vector<Model*> listOfModel : animationModels)
+	{
+		for (Model* model : listOfModel)
+		{
+			for (std::shared_ptr<Mesh> mesh : model->meshes)
+			{
+				for (Vertex& vertex : mesh->vertices)
+				{
+					vertex.color = glm::vec4(0.0f, 0.0, 1.0f, 1.0f);
+				}
+
+				mesh->UpdateVertices();
+			}
+		}
+	}
+
 }
 
 void Human::Start()
@@ -53,11 +78,12 @@ void Human::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsE
 		{
 			Entity* entity = (Entity*)otherObject->userData;
 			std::string tag = entity->tag;
-			
+
 			if (tag == "Border")
 			{
 				ChangeRandomDirection();
 			}
+
 		});
 
 	AssignRendererAndShader(renderer, shader);
@@ -95,6 +121,11 @@ void Human::RemoveFromRendererAndPhysics(Renderer* renderer, PhysicsEngine* phys
 
 	renderer->RemoveModel(model);
 	physicsEngine->RemovePhysicsObject(phyObj);
+
+	if (tag == "Enemy")
+	{
+		gameMediator->AddScore(100);
+	}
 }
 
 void Human::MoveTowardsPlayerPosition(float xPos, float yPos)
@@ -123,7 +154,7 @@ void Human::UpdateAnimationState()
 	{
 		ChangeAnimationState(RIGHT);
 	}
-	else if(phyObj->velocity.x < 0)
+	else if (phyObj->velocity.x < 0)
 	{
 		ChangeAnimationState(LEFT);
 	}

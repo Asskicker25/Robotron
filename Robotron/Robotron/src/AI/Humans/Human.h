@@ -3,11 +3,14 @@
 #include "../BaseAI.h"
 
 class HumansManager;
+class GameMediator;
 
 class Human : public BaseAI
 {
 
 public:
+
+	GameMediator* gameMediator;
 
 	enum HumanAnimationState
 	{
@@ -34,6 +37,7 @@ public:
 	float speedMax = 5.0f;
 
 	void RemoveFromHumanManager();
+	void ChangeToProg();
 
 private:
 

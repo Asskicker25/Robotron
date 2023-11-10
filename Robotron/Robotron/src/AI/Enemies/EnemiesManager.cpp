@@ -58,9 +58,9 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 
 	int brainCount = GetRandomIntNumber(brainCountMin, brainCountMax);
 
-	SpawnEnemiesByType(0, gruntCount);
+	/*SpawnEnemiesByType(0, gruntCount);
 	SpawnEnemiesByType(1, spheroidCount);
-	SpawnEnemiesByType(2, hulkCount);
+	SpawnEnemiesByType(2, hulkCount);*/
 	SpawnEnemiesByType(3, brainCount);
 }
 
@@ -114,6 +114,7 @@ void EnemiesManager::PIMPL::SpawnEnemyForSpheroid(const glm::vec3& position)
 
 	gameMediator->AddEnemy(enemy);
 }
+
 
 void EnemiesManager::PIMPL::AddBulletToMediator(BaseBullet* bullet)
 {

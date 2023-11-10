@@ -3,13 +3,17 @@
 #include "../../EntityManager/Entity.h"
 #include "Human.h"
 
+class GameMediator;
 class HumansManager : public Entity
 {
 
 public:
+
+	GameMediator* gameMediator;
 	std::vector<Human*> listOfHumans;
 	HumansManager();
 	void RemoveHuman(Human* human);
+	void ChangeToProg(Human* human);
 
 
 private:

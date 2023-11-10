@@ -80,6 +80,7 @@ void Robotron::SetUp()
 
 	HumansManager* humansManager = new HumansManager();
 
+	humansManager->gameMediator = gameMediator;
 	enemiesManager->humansManager = humansManager;
 	enemiesManager->SpawnEnemies();
 

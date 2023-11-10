@@ -11,7 +11,7 @@ HumansManager::HumansManager()
 
 void HumansManager::Start()
 {
-	//SpawnHumans();
+	SpawnHumans();
 }
 
 void HumansManager::Update(float deltaTime)
@@ -40,6 +40,8 @@ void HumansManager::SpawnHumans()
 
 		Human* human = new Human((Human::HumanType)random);
 
+		human->gameMediator = gameMediator;
+
 		EntityManager::GetInstance().AddEntity("Human" + std::to_string(listOfHumans.size()), human);
 
 		do {
@@ -59,4 +61,11 @@ void HumansManager::RemoveHuman( Human* human)
 	listOfHumans.erase(std::remove(listOfHumans.begin(), listOfHumans.end(), human), listOfHumans.end());
 
 	human->Destroy();
+}
+
+void HumansManager::ChangeToProg(Human* human)
+{
+	listOfHumans.erase(std::remove(listOfHumans.begin(), listOfHumans.end(), human), listOfHumans.end());
+
+	human->ChangeToProg();
 }

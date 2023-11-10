@@ -48,7 +48,8 @@ void Brain::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsE
 
 			if (tag == "Human")
 			{
-				humanManager->RemoveHuman(chasingHuman);
+				humanManager->ChangeToProg(chasingHuman);
+				//enemiesManager->SpawnProg(chasingHuman->model->transform.position);
 			}
 		});
 

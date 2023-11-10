@@ -136,7 +136,7 @@ void Player::Pimpl::OnCollision(PhysicsObject* otherObject)
 		player->gameMediator->OnPlayerDead();
 	}
 
-	if (tag == "EnforcerBullet" || tag == "TrackingMissile")
+	if (tag == "EnforcerBullet" || tag == "TrackingMissile" || tag == "BouncingOrb")
 	{
 		other->Destroy();
 		player->Destroy();

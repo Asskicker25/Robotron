@@ -3,6 +3,7 @@
 #include "Bullet.h"
 #include "EnforcerBullet.h"
 #include "TrackingMissile.h"
+#include "BouncingOrb.h"
 
 int BulletFactory::count = 0;
 
@@ -74,6 +75,29 @@ BaseBullet* BulletFactory::CreateTrackingMissile()
 
 	EntityManager::GetInstance().AddEntity("Factory" + std::to_string(index) + "TrackingMissile" + std::to_string(bulletCount), bullet);
 
+
+	bulletCount++;
+
+	return bullet;
+}
+
+BaseBullet* BulletFactory::CreateBouncingOrb()
+{
+	if (bouncingOrbPrefab == nullptr)
+	{
+		bouncingOrbPrefab = new Model("Assets/Models/DefaultSphere.fbx");
+		bouncingOrbPrefab->transform.SetScale(glm::vec3(0.3f));
+		bouncingOrbPrefab->meshes[0]->material->SetBaseColor(glm::vec3(1.0f, 0.0f, 0.0f));
+	}
+
+	BouncingOrb* bullet = new BouncingOrb();
+
+	bullet->CreateBulletInstance(bouncingOrbPrefab);
+
+	renderer->AddModel(bullet->model, shader);
+	physicsEngine->AddPhysicsObject(bullet->phyObj);
+
+	EntityManager::GetInstance().AddEntity("Factory" + std::to_string(index) + "BouncingOrb" + std::to_string(bulletCount), bullet);
 
 	bulletCount++;
 

@@ -63,10 +63,10 @@ void EnemiesManager::PIMPL::SpawnEnemies()
 
 	int tankCount = GetRandomIntNumber(tankCountMin, tankCountMax);
 
-	/*SpawnEnemiesByType(0, gruntCount);
+	SpawnEnemiesByType(0, gruntCount);
 	SpawnEnemiesByType(1, spheroidCount);
 	SpawnEnemiesByType(2, hulkCount);
-	SpawnEnemiesByType(3, brainCount);*/
+	SpawnEnemiesByType(3, brainCount);
 	SpawnEnemiesByType(4, tankCount);
 }
 

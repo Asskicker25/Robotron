@@ -20,6 +20,8 @@ private:
 
 	Model* trackingMissilePrefab = nullptr;
 
+	Model* bouncingOrbPrefab = nullptr;
+
 	std::vector<Model*> enforcerAnimationModels;
 
 	Renderer* renderer;
@@ -33,6 +35,7 @@ public:
 	BaseBullet* CreateBaseBullet();
 	BaseBullet* CreateEnforcerBullet();
 	BaseBullet* CreateTrackingMissile();
+	BaseBullet* CreateBouncingOrb();
 
 	void AssignRenderesAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine);
 };

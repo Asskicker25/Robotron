@@ -1,5 +1,6 @@
 #include "Tank.h"
 #include "../EnemiesManager.h"
+#include "../../../Utilities/Random.h"
 
 Tank::Tank()
 {
@@ -14,15 +15,16 @@ void Tank::Start()
 void Tank::UpdateAI(float deltaTime)
 {
 	UpdateAnimation(deltaTime);
+	CalculateShoot(deltaTime);
 }
 
 void Tank::AddToRendererAndPhysics(Renderer* renderer, Shader* shader, PhysicsEngine* physicsEngine)
 {
-	/*this->renderer = renderer;
+	this->renderer = renderer;
 	this->physicsEngine = physicsEngine;
 
 	bulletFactory = new BulletFactory();
-	bulletFactory->AssignRenderesAndPhysics(renderer, shader, physicsEngine);*/
+	bulletFactory->AssignRenderesAndPhysics(renderer, shader, physicsEngine);
 
 	model->LoadModel("Assets/Models/Enemies/Tank/tank1.ply");
 	model->transform.SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
@@ -85,5 +87,27 @@ void Tank::MoveTowardsPlayerPosition(float xPos, float yPos)
 void Tank::OnPlayerDead()
 {
 	phyObj->velocity = glm::vec3(0);
+}
+
+void Tank::CalculateShoot(float deltaTime)
+{
+	timeStep += deltaTime;
+
+	if (timeStep > bulletSpawnInterval)
+	{
+		timeStep = 0;
+
+		ShootBullet(model->transform.position);
+	}
+}
+
+void Tank::ShootBullet(glm::vec3 pos)
+{
+	BaseBullet* bullet = bulletFactory->CreateBouncingOrb();
+	bullet->model->transform.SetPosition(pos);
+
+	float randomX = GetRandomFloatNumber(-1, 1);
+	float randomY = GetRandomFloatNumber(-1, 1);
+	bullet->phyObj->velocity = glm::vec3(randomX, randomY, 0) * bullet->bulletSpeed;
 }
 

@@ -29,7 +29,7 @@ void Bullet::CreateBulletInstance(Model* bullet)
 			Entity* other = (Entity*)otherObject->userData;
 			std::string tag = other->tag;
 
-			if (tag == "Enemy" || tag == "EnforcerBullet" || tag == "TrackingMissile")
+			if (tag == "Enemy" || tag == "EnforcerBullet" || tag == "TrackingMissile" || tag == "BouncingOrb")
 			{
 				other->Destroy();
 				Destroy();

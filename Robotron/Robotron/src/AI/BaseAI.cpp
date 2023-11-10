@@ -69,8 +69,15 @@ void BaseAI::Update(float deltaTime)
 
 void BaseAI::ChangeRandomDirection(bool reflectedRandom)
 {
-	dirChangeInterval = GetRandomFloatNumber(dirChangeIntervalMin, dirChangeIntervalMax);
-	timeStep = 0;
-	phyObj->velocity = glm::vec3(GetRandomDirection(), 0.0f) * speed;
+	if (reflectedRandom)
+	{
+		phyObj->velocity = -phyObj->GetCollisionNormals()[0] * speed;
+	}
+	else
+	{
+		dirChangeInterval = GetRandomFloatNumber(dirChangeIntervalMin, dirChangeIntervalMax);
+		timeStep = 0;
+		phyObj->velocity = glm::vec3(GetRandomDirection(), 0.0f) * speed;
+	}
 }
 

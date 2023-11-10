@@ -108,6 +108,9 @@
     <ClCompile Include="src\AI\Enemies\Tank\Tank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Bullet\BouncingOrb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Robotron.h">
@@ -204,6 +207,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\AI\Enemies\Tank\Tank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Bullet\BouncingOrb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

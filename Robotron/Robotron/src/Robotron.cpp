@@ -48,6 +48,7 @@ void Robotron::SetUp()
 
 	EntityManager::GetInstance().AddToRendererAndPhysics(&renderer, &defShader, &physicsEngine);
 
+
 #pragma region Level
 
 	Border* border = new Border();
